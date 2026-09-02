@@ -1,4 +1,53 @@
-// Rutas de la app con react-router-dom.
-// Acá va el AppRouter con todos los <Route />, incluyendo rutas protegidas para admin.
+// Árbol de rutas de la aplicación
+// Públicas: /, /login, /register, /game/:id, /about, *
+// Protegidas (usuario): /wishlist
+// Protegidas (admin): /admin
 
-export {}
+import { Routes, Route } from 'react-router-dom'
+import { ProtectedRoute } from './ProtectedRoute'
+import { AdminRoute } from './AdminRoute'
+
+import { HomePage } from '../pages/Home'
+import { GameDetailPage } from '../pages/GameDetail'
+import { LoginPage } from '../pages/Login'
+import { RegisterPage } from '../pages/Register'
+import { WishlistPage } from '../pages/Wishlist'
+import { AboutPage } from '../pages/About'
+import { NotFoundPage } from '../pages/NotFound'
+import { AdminDashboard } from '../pages/Admin'
+
+export function AppRoutes() {
+  return (
+    <Routes>
+      {/* Rutas públicas */}
+      <Route path="/" element={<HomePage />} />
+      <Route path="/game/:id" element={<GameDetailPage />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/register" element={<RegisterPage />} />
+      <Route path="/about" element={<AboutPage />} />
+
+      {/* Ruta protegida: solo usuarios logueados */}
+      <Route
+        path="/wishlist"
+        element={
+          <ProtectedRoute>
+            <WishlistPage />
+          </ProtectedRoute>
+        }
+      />
+
+      {/* Ruta protegida: solo admin */}
+      <Route
+        path="/admin"
+        element={
+          <AdminRoute>
+            <AdminDashboard />
+          </AdminRoute>
+        }
+      />
+
+      {/* 404 */}
+      <Route path="*" element={<NotFoundPage />} />
+    </Routes>
+  )
+}

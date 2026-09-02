@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
 *,
@@ -9,10 +10,34 @@
 body {
   margin: 0;
   min-height: 100vh;
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: #06060b;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 #root {
   min-height: 100vh;
+}
+
+/* UI/UX: Todos los botones, links y elementos clickleables muestran la manito (cursor pointer) */
+button,
+a,
+[role="button"] {
+  cursor: pointer;
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a12;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2a3e;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3a55;
 }

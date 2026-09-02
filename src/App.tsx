@@ -1,12 +1,17 @@
-// Raíz de la app. Acá van los Providers de contexto y el AppRouter.
-// No tocar main.tsx, las modificaciones van acá.
-
+// Raíz de la app: monta los Providers globales y el layout principal
 import { BrowserRouter } from 'react-router-dom'
+import { AuthProvider } from './context/AuthContext'
+import { GameProvider } from './context/GameContext'
+import { MainLayout } from './layout'
 
 function App() {
   return (
     <BrowserRouter>
-      {/* TODO: Providers de context + <AppRouter /> */}
+      <AuthProvider>
+        <GameProvider>
+          <MainLayout />
+        </GameProvider>
+      </AuthProvider>
     </BrowserRouter>
   )
 }

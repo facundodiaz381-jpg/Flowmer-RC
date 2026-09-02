@@ -1,3 +1,4 @@
-// Llamadas a la API: productService, authService, gameService, etc.
+// Exportación centralizada de servicios y persistencia
 
-export {}
+export * from "./storageService";
+export * from "./seedData";
