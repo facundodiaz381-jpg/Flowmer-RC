@@ -1,4 +1,3 @@
-// Exportación centralizada de servicios y persistencia
-
+// Exportación centralizada del servicio de persistencia (localStorage)
 export * from "./storageService";
-export * from "./seedData";
+

@@ -141,12 +141,13 @@ export function GameDetailPage() {
                   </div>
                 ))}
               </div>
-              {/* Reseñas de la comunidad con ReviewList */}
-              <ReviewList
-                reviews={gameReviews}
-                isLoggedIn={Boolean(currentUser)}
-              />
             </div>
+
+            {/* Reseñas de la comunidad con ReviewList */}
+            <ReviewList
+              reviews={gameReviews}
+              isLoggedIn={Boolean(currentUser)}
+            />
           </div>
 
           {/* Columna Derecha: Portada limpia + Comprar / Wishlist + Votos (5 columnas) */}

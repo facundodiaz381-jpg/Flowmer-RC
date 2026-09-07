@@ -1,9 +1,9 @@
 // ReviewCard: Tarjeta de reseña individual de un usuario
-import type { Review } from '../../types'
+import type { Review } from "../interfaces";
 
 type ReviewCardProps = {
-  review: Review
-}
+  review: Review;
+};
 
 export function ReviewCard({ review }: ReviewCardProps) {
   return (
@@ -14,5 +14,5 @@ export function ReviewCard({ review }: ReviewCardProps) {
       </div>
       <p className="text-gray-300 text-sm leading-relaxed">{review.comment}</p>
     </div>
-  )
+  );
 }

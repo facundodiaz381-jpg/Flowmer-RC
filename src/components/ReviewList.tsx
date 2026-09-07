@@ -1,12 +1,12 @@
 // ReviewList: Lista de reseñas de la comunidad
-import type { Review } from '../../types'
-import { ReviewCard } from '../ReviewCard'
-import { Link } from 'react-router-dom'
+import type { Review } from "../interfaces";
+import { ReviewCard } from "./ReviewCard";
+import { Link } from "react-router-dom";
 
 type ReviewListProps = {
-  reviews: Review[]
-  isLoggedIn: boolean
-}
+  reviews: Review[];
+  isLoggedIn: boolean;
+};
 
 export function ReviewList({ reviews, isLoggedIn }: ReviewListProps) {
   return (
@@ -19,9 +19,14 @@ export function ReviewList({ reviews, isLoggedIn }: ReviewListProps) {
 
       {reviews.length === 0 ? (
         <div className="text-center py-8 bg-white/5 rounded-xl border border-white/5">
-          <p className="text-gray-400 text-sm">Aún no hay reseñas publicadas para este título.</p>
+          <p className="text-gray-400 text-sm">
+            Aún no hay reseñas publicadas para este título.
+          </p>
           {!isLoggedIn && (
-            <Link to="/login" className="text-violet-400 text-xs font-semibold hover:underline mt-2 inline-block">
+            <Link
+              to="/login"
+              className="text-violet-400 text-xs font-semibold hover:underline mt-2 inline-block"
+            >
               Iniciá sesión para opinar
             </Link>
           )}
@@ -34,5 +39,5 @@ export function ReviewList({ reviews, isLoggedIn }: ReviewListProps) {
         </div>
       )}
     </div>
-  )
+  );
 }

@@ -1,6 +1,6 @@
 // GameCard: Tarjeta individual de videojuego para el catálogo
 import { Link } from "react-router-dom";
-import type { Game } from "../../types";
+import type { Game } from "../interfaces";
 
 type GameCardProps = {
   game: Game;

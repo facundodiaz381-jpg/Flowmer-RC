@@ -2,14 +2,14 @@
 import { BrowserRouter } from 'react-router-dom'
 import { AuthProvider } from './context/AuthContext'
 import { GameProvider } from './context/GameContext'
-import { MainLayout } from './layout'
+import { LayoutScreen } from './layout/LayoutScreen'
 
 function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
         <GameProvider>
-          <MainLayout />
+          <LayoutScreen />
         </GameProvider>
       </AuthProvider>
     </BrowserRouter>

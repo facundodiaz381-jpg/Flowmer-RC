@@ -1,6 +1,8 @@
 // Datos iniciales para poblar localStorage la primera vez que se abre la app
+import type { Game } from "../interfaces";
+import { seedUsers } from "./usuarios";
 
-import type { Game, User } from "../types";
+export { seedUsers };
 
 export const seedGames: Game[] = [
   {
@@ -134,22 +136,5 @@ export const seedGames: Game[] = [
     },
     upvotes: 3400,
     downvotes: 210,
-  },
-];
-
-export const seedUsers: User[] = [
-  {
-    id: 1,
-    name: "Administrador",
-    email: "admin@flowmer.com",
-    password: "admin123",
-    role: "admin",
-  },
-  {
-    id: 2,
-    name: "Player One",
-    email: "player@flowmer.com",
-    password: "player123",
-    role: "client",
   },
 ];

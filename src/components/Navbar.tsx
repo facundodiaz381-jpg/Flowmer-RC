@@ -1,9 +1,9 @@
 // Navbar principal de FlowMer — glassmorphism estilo Steam
 import { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext";
-import { useGame } from "../../context/GameContext";
-import { SearchBar } from "../SearchBar";
+import { useAuth } from "../context/AuthContext";
+import { useGame } from "../context/GameContext";
+import { SearchBar } from "./SearchBar";
 
 export function Navbar() {
   const { currentUser, logout } = useAuth();

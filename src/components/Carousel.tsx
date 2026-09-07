@@ -1,7 +1,7 @@
 // HeroCarousel estilo Steam Store: Banner principal + Sidebar con miniaturas
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import type { Game } from "../../types";
+import type { Game } from "../interfaces";
 
 type HeroCarouselProps = {
   games: Game[];

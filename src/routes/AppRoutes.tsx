@@ -1,20 +1,20 @@
-// Árbol de rutas de la aplicación
+// Árbol de rutas de la aplicación — AppRoutes
 // Públicas: /, /login, /register, /game/:id, /about, *
 // Protegidas (usuario): /wishlist
 // Protegidas (admin): /admin
 
-import { Routes, Route } from 'react-router-dom'
-import { ProtectedRoute } from './ProtectedRoute'
-import { AdminRoute } from './AdminRoute'
+import { Routes, Route } from "react-router-dom";
+import { ProtectedRoute } from "./ProtectedRoute";
+import { AdminRoute } from "./AdminRoute";
 
-import { HomePage } from '../pages/Home'
-import { GameDetailPage } from '../pages/GameDetail'
-import { LoginPage } from '../pages/Login'
-import { RegisterPage } from '../pages/Register'
-import { WishlistPage } from '../pages/Wishlist'
-import { AboutPage } from '../pages/About'
-import { NotFoundPage } from '../pages/NotFound'
-import { AdminDashboard } from '../pages/Admin'
+import { HomePage } from "../pages/Home";
+import { GameDetailPage } from "../pages/GameDetail";
+import { LoginPage } from "../pages/Login";
+import { RegisterPage } from "../pages/Register";
+import { WishlistPage } from "../pages/Wishlist";
+import { AboutPage } from "../pages/About";
+import { NotFoundPage } from "../pages/NotFound";
+import { AdminDashboard } from "../pages/Admin";
 
 export function AppRoutes() {
   return (
@@ -49,5 +49,5 @@ export function AppRoutes() {
       {/* 404 */}
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
-  )
+  );
 }
