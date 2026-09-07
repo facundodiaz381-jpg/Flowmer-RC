@@ -1,19 +1,23 @@
 // Layout principal de la aplicación
-// Controla qué páginas muestran el Navbar (Login, Register y Admin tienen su propio layout)
+// Controla qué páginas muestran el Navbar y Footer (Login, Register y Admin tienen su propio layout)
 import { useLocation } from 'react-router-dom'
-import { Navbar } from '../components/Navbar'
+import { Navbar, Footer } from '../components'
 import { AppRoutes } from '../routes'
 
-const HIDDEN_NAVBAR_ROUTES = ['/login', '/register', '/admin']
+const HIDDEN_LAYOUT_ROUTES = ['/login', '/register', '/admin']
 
 export function MainLayout() {
   const { pathname } = useLocation()
-  const hideNavbar = HIDDEN_NAVBAR_ROUTES.some((route) => pathname.startsWith(route))
+  const hideLayout = HIDDEN_LAYOUT_ROUTES.some((route) => pathname.startsWith(route))
 
   return (
-    <>
-      {!hideNavbar && <Navbar />}
-      <AppRoutes />
-    </>
+    <div className="min-h-screen flex flex-col bg-[#06060b] text-gray-100">
+      {!hideLayout && <Navbar />}
+      <main className="flex-1">
+        <AppRoutes />
+      </main>
+      {!hideLayout && <Footer />}
+    </div>
   )
 }
+
