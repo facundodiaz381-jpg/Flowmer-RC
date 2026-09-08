@@ -43,7 +43,8 @@ export function initStorage(): void {
     // Forzar re-seed si: ningún juego tiene trailerUrl O el primer juego difiere del seed
     const needsSync =
       !parsedGames.some((g) => Boolean(g.trailerUrl)) ||
-      parsedGames[0]?.title !== seedGames[0]?.title;
+      parsedGames[0]?.title !== seedGames[0]?.title ||
+      parsedGames.find((g) => g.id === 3)?.trailerUrl !== seedGames.find((g) => g.id === 3)?.trailerUrl;
     if (needsSync) {
       localStorage.setItem(KEYS.games, JSON.stringify(seedGames));
     }

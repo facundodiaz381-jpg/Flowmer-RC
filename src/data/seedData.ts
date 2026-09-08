@@ -59,7 +59,7 @@ export const seedGames: Game[] = [
     genre: "Acción / Western",
     image:
       "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1174180/header.jpg?t=1759502961",
-    trailerUrl: "https://www.youtube.com/embed/eaW0tIObfcU",
+    trailerUrl: "https://www.youtube.com/embed/gmA6MrX81z4",
     developer: "Rockstar Games",
     systemRequirements: {
       os: "Windows 10/11 (64-bit)",

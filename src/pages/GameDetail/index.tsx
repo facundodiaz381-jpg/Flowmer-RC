@@ -29,9 +29,12 @@ export function GameDetailPage() {
   const userVote = currentUser
     ? votes.find((v) => v.userId === currentUser.id && v.gameId === game.id)
     : undefined;
-  const inWishlist = currentUser
-    ? wishlist.some((w) => w.userId === currentUser.id && w.gameId === game.id)
-    : false;
+
+  const currentUserId = currentUser ? currentUser.id : 0;
+  const inWishlist = wishlist.some(
+    (w) => w.userId === currentUserId && w.gameId === game.id,
+  );
+
   const totalVotes = game.upvotes + game.downvotes;
   const positivePercent =
     totalVotes > 0 ? Math.round((game.upvotes / totalVotes) * 100) : 0;
@@ -175,7 +178,7 @@ export function GameDetailPage() {
                   </span>
                 </div>
 
-                {/* Botón Comprar / Wishlist */}
+                {/* Botón Comprar / Favoritos */}
                 <div className="space-y-2">
                   <button
                     onClick={() =>
@@ -201,27 +204,18 @@ export function GameDetailPage() {
                     Comprar ahora
                   </button>
 
-                  {currentUser ? (
-                    <button
-                      onClick={() => toggleWishlist(currentUser.id, game.id)}
-                      className={`w-full py-2.5 rounded-xl border text-sm font-semibold transition-all duration-200 flex items-center justify-center gap-2 ${
-                        inWishlist
-                          ? "bg-violet-600/20 border-violet-500/50 text-violet-300 hover:bg-violet-600/30"
-                          : "bg-white/5 border-white/10 text-gray-300 hover:border-violet-500/50 hover:bg-white/10"
-                      }`}
-                    >
-                      {inWishlist
-                        ? "♥ Guardado en wishlist"
-                        : "♡ Agregar a wishlist"}
-                    </button>
-                  ) : (
-                    <Link
-                      to="/login"
-                      className="block text-center w-full py-2.5 rounded-xl border border-white/10 bg-white/5 text-gray-300 hover:text-white text-sm font-semibold transition-colors"
-                    >
-                      Iniciá sesión para guardar en wishlist
-                    </Link>
-                  )}
+                  <button
+                    onClick={() => toggleWishlist(currentUserId, game.id)}
+                    className={`w-full py-2.5 rounded-xl border text-sm font-semibold transition-all duration-200 flex items-center justify-center gap-2 ${
+                      inWishlist
+                        ? "bg-violet-600/20 border-violet-500/50 text-fuchsia-300 hover:bg-violet-600/30"
+                        : "bg-white/5 border-white/10 text-gray-300 hover:border-violet-500/50 hover:bg-white/10"
+                    }`}
+                  >
+                    {inWishlist
+                      ? "♥ Guardado en favoritos"
+                      : "♡ Agregar a favoritos"}
+                  </button>
                 </div>
               </div>
             </div>
@@ -270,6 +264,20 @@ export function GameDetailPage() {
                   👎 <span>{game.downvotes.toLocaleString()}</span>
                 </button>
               </div>
+
+              {!currentUser && (
+                <div className="bg-white/5 border border-white/5 rounded-xl py-2.5 px-4 text-center mt-3">
+                  <p className="text-xs sm:text-sm text-gray-300">
+                    <Link
+                      to="/login"
+                      className="text-violet-400 font-bold hover:text-violet-300 hover:underline"
+                    >
+                      Iniciá sesión
+                    </Link>{" "}
+                    para calificar este juego
+                  </p>
+                </div>
+              )}
             </div>
           </div>
         </div>
