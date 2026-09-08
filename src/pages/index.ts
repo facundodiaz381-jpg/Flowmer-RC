@@ -1,3 +1,3 @@
-// Páginas públicas: HomePage, ProductsPage, CartPage, LoginPage, etc.
+// Páginas de la app: HomePage, GameDetailPage, LoginPage, RegisterPage, WishlistPage, AboutPage, NotFoundPage, etc.
 
-export {}
+export {};

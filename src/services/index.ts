@@ -1,3 +1,3 @@
-// Llamadas a la API: productService, authService, gameService, etc.
+// Exportación centralizada del servicio de persistencia (localStorage)
+export * from "./storageService";
 
-export {}
