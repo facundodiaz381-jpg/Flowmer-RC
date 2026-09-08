@@ -7,10 +7,14 @@ import { SearchBar } from "./SearchBar";
 
 export function Navbar() {
   const { currentUser, logout } = useAuth();
-  const { searchTerm, setSearchTerm } = useGame();
+  const { searchTerm, setSearchTerm, wishlist } = useGame();
   const navigate = useNavigate();
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
+
+  // Contador de deseados según el usuario actual (o invitado con id 0)
+  const currentUserId = currentUser ? currentUser.id : 0;
+  const wishlistCount = wishlist.filter((w) => w.userId === currentUserId).length;
 
   function handleLogout(): void {
     logout();
@@ -43,14 +47,17 @@ export function Navbar() {
           >
             Tienda
           </Link>
-          {currentUser && (
-            <Link
-              to="/wishlist"
-              className={`text-[13px] font-medium px-3 py-1.5 rounded-md transition-all duration-200 ${isActive("/wishlist") ? "text-white bg-white/10" : "text-gray-400 hover:text-white hover:bg-white/5"}`}
-            >
-              Wishlist
-            </Link>
-          )}
+          <Link
+            to="/wishlist"
+            className={`flex items-center gap-1.5 text-[13px] font-medium px-3 py-1.5 rounded-md transition-all duration-200 ${isActive("/wishlist") ? "text-white bg-white/10" : "text-gray-400 hover:text-white hover:bg-white/5"}`}
+          >
+            <span>Favoritos</span>
+            {wishlistCount > 0 && (
+              <span className="bg-fuchsia-500/20 text-fuchsia-300 border border-fuchsia-500/30 text-[10px] font-bold px-1.5 py-0.5 rounded-full">
+                {wishlistCount}
+              </span>
+            )}
+          </Link>
           <Link
             to="/about"
             className={`text-[13px] font-medium px-3 py-1.5 rounded-md transition-all duration-200 ${isActive("/about") ? "text-white bg-white/10" : "text-gray-400 hover:text-white hover:bg-white/5"}`}
