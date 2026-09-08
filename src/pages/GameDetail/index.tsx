@@ -1,11 +1,14 @@
 // Página de detalle de un juego — Diseño Premium estilo Steam con tráiler de YouTube
+import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useGame } from "../../context/GameContext";
 import { useAuth } from "../../context/AuthContext";
 import { ReviewList } from "../../components/ReviewList";
+import { CheckoutModal } from "../../components/CheckoutModal";
 
 export function GameDetailPage() {
   const { id } = useParams<{ id: string }>();
+  const [isBuyModalOpen, setIsBuyModalOpen] = useState(false);
   const { games, reviews, votes, addVote, toggleWishlist, wishlist } =
     useGame();
   const { currentUser } = useAuth();
@@ -178,12 +181,8 @@ export function GameDetailPage() {
                 {/* Botón Comprar / Wishlist */}
                 <div className="space-y-2">
                   <button
-                    onClick={() =>
-                      alert(
-                        `¡Gracias por tu interés en ${game.title}! Pronto se habilitará la pasarela de pago.`,
-                      )
-                    }
-                    className="w-full bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 text-white font-bold py-3 rounded-xl shadow-lg shadow-violet-600/30 transition-all duration-300 flex items-center justify-center gap-2"
+                    onClick={() => setIsBuyModalOpen(true)}
+                    className="w-full bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 text-white font-bold py-3 rounded-xl shadow-lg shadow-violet-600/30 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer active:scale-[0.98]"
                   >
                     <svg
                       className="w-5 h-5"
@@ -237,20 +236,20 @@ export function GameDetailPage() {
                 </span>
               </div>
 
-              {/* Barra de estado visual */}
-              <div className="w-full bg-white/5 rounded-full h-2 overflow-hidden">
+              {/* Barra de progreso de valoración */}
+              <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden">
                 <div
-                  className="h-full bg-gradient-to-r from-green-500 to-emerald-400 rounded-full transition-all duration-500"
+                  className="h-full bg-gradient-to-r from-green-500 to-emerald-400 transition-all duration-500"
                   style={{ width: `${positivePercent}%` }}
                 />
               </div>
 
-              {/* Botones de Voto (+ / -) */}
-              <div className="flex items-center gap-3 pt-2">
+              {/* Botones de Voto (Upvote / Downvote) */}
+              <div className="grid grid-cols-2 gap-3 pt-2">
                 <button
                   onClick={() => handleVote("up")}
                   disabled={!currentUser}
-                  className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl border text-sm font-bold transition-all duration-200 ${
+                  className={`py-2 px-3 rounded-xl border text-xs font-bold transition-all duration-200 flex items-center justify-center gap-2 ${
                     userVote?.type === "up"
                       ? "bg-green-600/20 border-green-500/50 text-green-300"
                       : "bg-white/5 border-white/10 text-gray-400 hover:border-green-500/50 hover:text-green-300"
@@ -261,7 +260,7 @@ export function GameDetailPage() {
                 <button
                   onClick={() => handleVote("down")}
                   disabled={!currentUser}
-                  className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl border text-sm font-bold transition-all duration-200 ${
+                  className={`py-2 px-3 rounded-xl border text-xs font-bold transition-all duration-200 flex items-center justify-center gap-2 ${
                     userVote?.type === "down"
                       ? "bg-red-600/20 border-red-500/50 text-red-300"
                       : "bg-white/5 border-white/10 text-gray-400 hover:border-red-500/50 hover:text-red-300"
@@ -274,6 +273,13 @@ export function GameDetailPage() {
           </div>
         </div>
       </div>
+
+      {/* Modal de Pasarela de Compra */}
+      <CheckoutModal
+        game={game}
+        isOpen={isBuyModalOpen}
+        onClose={() => setIsBuyModalOpen(false)}
+      />
     </div>
   );
 }
