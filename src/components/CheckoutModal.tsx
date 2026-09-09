@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import type { Game } from "../interfaces";
 import { useAuth } from "../context/AuthContext";
 
@@ -9,49 +9,43 @@ interface CheckoutModalProps {
   onClose: () => void;
 }
 
+const PAYMENT_METHODS = [
+  { id: "card" as const, label: "Tarjeta", icon: "💳" },
+  { id: "mercadopago" as const, label: "Mercado Pago", icon: "💙" },
+  { id: "wallet" as const, label: "Billetera", icon: "💰" },
+];
+
+type PaymentMethod = "card" | "mercadopago" | "wallet";
+
 export function CheckoutModal({ game, isOpen, onClose }: CheckoutModalProps) {
   const { currentUser } = useAuth();
-  const navigate = useNavigate();
-  const [paymentMethod, setPaymentMethod] = useState<
-    "card" | "mercadopago" | "wallet"
-  >("card");
+  const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>("card");
   const [status, setStatus] = useState<
     "idle" | "processing" | "success" | "need_login"
   >("idle");
 
-  // Cerrar modal con tecla Escape
-  useEffect(() => {
-    function handleKeyDown(e: KeyboardEvent) {
-      if (e.key === "Escape" && status !== "processing") {
-        handleClose();
-      }
-    }
-    if (isOpen) {
-      window.addEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "hidden";
-    }
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "unset";
-    };
-  }, [isOpen, status]);
-
   if (!isOpen) return null;
+
+  const isFree = game.price === 0;
+  const priceLabel = isFree ? "GRATIS" : `$${game.price.toFixed(2)}`;
+
   function handleClose() {
     setStatus("idle");
     onClose();
   }
+
   function handlePurchase() {
-    if (!currentUser) {
-      setStatus("need_login");
-      return;
-    }
+    if (!currentUser) return setStatus("need_login");
     setStatus("processing");
-    setTimeout(() => {
-      setStatus("success");
-    }, 1500);
+    setTimeout(() => setStatus("success"), 1500);
   }
-  const isFree = game.price === 0;
+
+  const btnClass = (active: boolean) =>
+    `p-3 rounded-xl border flex flex-col items-center justify-center gap-1.5 transition-all ${
+      active
+        ? "bg-violet-600/20 border-violet-500 text-white shadow-md shadow-violet-600/20"
+        : "bg-white/5 border-white/10 text-gray-400 hover:border-white/20 hover:text-white"
+    }`;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
@@ -212,9 +206,7 @@ export function CheckoutModal({ game, isOpen, onClose }: CheckoutModalProps) {
                 </div>
               </div>
               <div className="text-right shrink-0">
-                <span className="text-base font-black text-white">
-                  {isFree ? "GRATIS" : `$${game.price.toFixed(2)}`}
-                </span>
+                <span className="text-base font-black text-white">{priceLabel}</span>
               </div>
             </div>
 
@@ -225,44 +217,17 @@ export function CheckoutModal({ game, isOpen, onClose }: CheckoutModalProps) {
                   Seleccionar Método de Pago
                 </label>
                 <div className="grid grid-cols-3 gap-2.5">
-                  <button
-                    type="button"
-                    onClick={() => setPaymentMethod("card")}
-                    className={`p-3 rounded-xl border text-left flex flex-col items-center justify-center gap-1.5 transition-all ${
-                      paymentMethod === "card"
-                        ? "bg-violet-600/20 border-violet-500 text-white shadow-md shadow-violet-600/20"
-                        : "bg-white/5 border-white/10 text-gray-400 hover:border-white/20 hover:text-white"
-                    }`}
-                  >
-                    <span className="text-lg">💳</span>
-                    <span className="text-xs font-semibold">Tarjeta</span>
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => setPaymentMethod("mercadopago")}
-                    className={`p-3 rounded-xl border text-left flex flex-col items-center justify-center gap-1.5 transition-all ${
-                      paymentMethod === "mercadopago"
-                        ? "bg-violet-600/20 border-violet-500 text-white shadow-md shadow-violet-600/20"
-                        : "bg-white/5 border-white/10 text-gray-400 hover:border-white/20 hover:text-white"
-                    }`}
-                  >
-                    <span className="text-lg">💙</span>
-                    <span className="text-xs font-semibold">Mercado Pago</span>
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => setPaymentMethod("wallet")}
-                    className={`p-3 rounded-xl border text-left flex flex-col items-center justify-center gap-1.5 transition-all ${
-                      paymentMethod === "wallet"
-                        ? "bg-violet-600/20 border-violet-500 text-white shadow-md shadow-violet-600/20"
-                        : "bg-white/5 border-white/10 text-gray-400 hover:border-white/20 hover:text-white"
-                    }`}
-                  >
-                    <span className="text-lg">💰</span>
-                    <span className="text-xs font-semibold">Billetera</span>
-                  </button>
+                  {PAYMENT_METHODS.map(({ id, label, icon }) => (
+                    <button
+                      key={id}
+                      type="button"
+                      onClick={() => setPaymentMethod(id)}
+                      className={btnClass(paymentMethod === id)}
+                    >
+                      <span className="text-lg">{icon}</span>
+                      <span className="text-xs font-semibold">{label}</span>
+                    </button>
+                  ))}
                 </div>
               </div>
             )}
@@ -281,9 +246,7 @@ export function CheckoutModal({ game, isOpen, onClose }: CheckoutModalProps) {
               </div>
               <div className="pt-2 border-t border-white/10 flex justify-between text-sm font-bold">
                 <span className="text-white">Total a pagar:</span>
-                <span className="text-lg font-black text-violet-300">
-                  {isFree ? "GRATIS" : `$${game.price.toFixed(2)}`}
-                </span>
+                <span className="text-lg font-black text-violet-300">{priceLabel}</span>
               </div>
             </div>
 
@@ -319,12 +282,8 @@ export function CheckoutModal({ game, isOpen, onClose }: CheckoutModalProps) {
                   </>
                 ) : (
                   <>
-                    <span>🛍️</span>
-                    <span>
-                      {isFree
-                        ? "Obtener Juego Gratis"
-                        : `Pagar $${game.price.toFixed(2)} y Descargar`}
-                    </span>
+                    <span>{isFree ? "🎮" : "🛍️"}</span>
+                    <span>{isFree ? "Obtener Juego Gratis" : `Pagar ${priceLabel} y Descargar`}</span>
                   </>
                 )}
               </button>
