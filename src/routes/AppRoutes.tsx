@@ -5,7 +5,6 @@
 
 import { Routes, Route } from "react-router-dom";
 import { ProtectedRoute } from "./ProtectedRoute";
-import { AdminRoute } from "./AdminRoute";
 
 import { HomePage } from "../pages/Home";
 import { GameDetailPage } from "../pages/GameDetail";
@@ -14,7 +13,7 @@ import { RegisterPage } from "../pages/Register";
 import { WishlistPage } from "../pages/Wishlist";
 import { AboutPage } from "../pages/About";
 import { NotFoundPage } from "../pages/NotFound";
-import { AdminDashboard } from "../pages/Admin";
+import { Admin} from "../pages/Admin/admin";
 
 export function AppRoutes() {
   return (
@@ -36,15 +35,23 @@ export function AppRoutes() {
         }
       />
 
+
+
       {/* Ruta protegida: solo admin */}
-      <Route
+      {/* <Route
         path="/admin"
         element={
           <AdminRoute>
             <AdminDashboard />
           </AdminRoute>
         }
-      />
+      /> */}
+{/* Ruta de admin - temporalmente sin protección */}
+<Route
+  path="/admin"
+  element={<Admin/>}
+/>
+
 
       {/* 404 */}
       <Route path="*" element={<NotFoundPage />} />
