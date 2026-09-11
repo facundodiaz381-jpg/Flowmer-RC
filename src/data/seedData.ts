@@ -165,7 +165,7 @@ export const seedGames: Game[] = [
     description:
       "Forma equipo con otros cuatro jugadores para aniquilar y conquistar contra tus enemigos con 15 personajes jugables y más de 25 mapas para luchar. Disfruta de las PHIGHT contra otros jugadores, vence oleadas de zombis en Crossroads Must Fall o simplemente pasa el rato en Crossroads, ¡pero siempre prepárate para PHIGHT!.",
     price: 0.0,
-    category: "Accion",
+    category: "Action",
     genre: "Shotter/Peleas",
     image:
       "https://cdn.discordapp.com/attachments/1003919647151771658/1538970748654325801/notext.png?ex=6aa59333&is=6aa441b3&hm=a5b001d844b3abb7955fb19bb622f805d24e032aa540cb7723ac3b67c179354c",
