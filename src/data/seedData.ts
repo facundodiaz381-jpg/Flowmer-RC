@@ -137,4 +137,26 @@ export const seedGames: Game[] = [
     upvotes: 3400,
     downvotes: 210,
   },
+  {
+    id: 7,
+    title: "Deltarune",
+    description:
+      "¡Sumérgete en la historia paralela de UNDERTALE! Lucha o perdona en intensas batallas mientras exploras un mundo misterioso junto a un entrañable elenco de personajes nuevos y conocidos. Los capítulos 1 al 5 ya están disponibles, ¡y pronto habrá más en actualizaciones gratuitas!",
+    price: 24.99,
+    category: "RPG",
+    genre: "Indie/Rol",
+    image:
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1671210/7ccda5b1631d2e60cc756a3271e845dbb9168821/header.jpg?t=1782314340",
+    trailerUrl: "https://www.youtube.com/embed/yDzgiGdekas?si=Lwj-_9_39Bz9Fgra",
+    developer: "Toby Fox",
+    systemRequirements: {
+      os: "Windows 10",
+      processor: "Intel i2",
+      memory: "2 GB de RAM",
+      graphics: "128 mb",
+      storage: " 1 GB de espacio disponible",
+    },
+    upvotes: 4000,
+    downvotes: 2,
+  },
 ];
