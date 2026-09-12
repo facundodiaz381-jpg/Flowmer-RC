@@ -1,8 +1,8 @@
 
-import React from "react";
-import { Link } from "react-router-dom";
-import type { Game } from "../interfaces/products"; 
-import { useWishlist } from "../hooks/useWishlist"; 
+import { Link, useNavigate } from "react-router-dom";
+import type { Game } from "../interfaces";
+import { useWishlist } from "../hooks";
+import { useAuth } from "../context/AuthContext";
 
 type GameCardProps = {
   game: Game;
@@ -10,12 +10,22 @@ type GameCardProps = {
 
 export function GameCard({ game }: GameCardProps) {
   const { isInWishlist, toggleWishlist } = useWishlist();
-  const isFavorite = isInWishlist(game.id);
+  const { currentUser } = useAuth();
+  const navigate = useNavigate();
+
+  const gameIdStr = String(game.id);
+  const liked = isInWishlist(gameIdStr);
 
   const handleWishlistClick = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    toggleWishlist(game.id);
+
+    if (!currentUser) {
+      navigate("/login");
+      return;
+    }
+
+    toggleWishlist(gameIdStr);
   };
 
   return (
@@ -31,17 +41,14 @@ export function GameCard({ game }: GameCardProps) {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0e0e18] via-transparent to-transparent opacity-60" />
 
+        {/* Botón de wishlist */}
         <button
           type="button"
           onClick={handleWishlistClick}
-          className={`absolute top-3 left-3 z-10 p-2 rounded-lg backdrop-blur-sm border transition-all duration-200 ${
-            isFavorite
-              ? "bg-violet-600/80 border-violet-400/50 text-white shadow-lg shadow-violet-500/30 scale-105"
-              : "bg-black/60 border-white/10 text-gray-400 hover:text-white hover:border-white/30"
-          }`}
-          title={isFavorite ? "Quitar de la Wishlist" : "Añadir a la Wishlist"}
+          className="absolute top-3 left-3 bg-black/60 backdrop-blur-sm border border-white/10 p-2 rounded-lg hover:bg-black/80 transition-colors z-10"
+          title={liked ? "Eliminar de la lista" : "Añadir a la lista"}
         >
-          <span className="text-xs leading-none">{isFavorite ? "💜" : "🤍"}</span>
+          <span className="text-base leading-none">{liked ? "❤️" : "🤍"}</span>
         </button>
 
         <div className="absolute top-3 right-3 bg-black/60 backdrop-blur-sm border border-white/10 px-3 py-1 rounded-lg">
