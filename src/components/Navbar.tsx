@@ -1,4 +1,3 @@
-// Navbar principal de FlowMer — glassmorphism estilo Steam
 import { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
@@ -43,20 +42,22 @@ export function Navbar() {
           >
             Tienda
           </Link>
-          {currentUser && (
-            <Link
-              to="/wishlist"
-              className={`text-[13px] font-medium px-3 py-1.5 rounded-md transition-all duration-200 ${isActive("/wishlist") ? "text-white bg-white/10" : "text-gray-400 hover:text-white hover:bg-white/5"}`}
-            >
-              Wishlist
-            </Link>
-          )}
           <Link
             to="/about"
             className={`text-[13px] font-medium px-3 py-1.5 rounded-md transition-all duration-200 ${isActive("/about") ? "text-white bg-white/10" : "text-gray-400 hover:text-white hover:bg-white/5"}`}
           >
             About
           </Link>
+
+          {/* Aparece ÚNICAMENTE si hay sesión iniciada */}
+          {currentUser && (
+            <Link
+              to="/wishlist"
+              className={`text-[13px] font-medium px-3 py-1.5 rounded-md transition-all duration-200 ${isActive("/wishlist") ? "text-white bg-white/10" : "text-gray-400 hover:text-white hover:bg-white/5"}`}
+            >
+              Mis Favoritos
+            </Link>
+          )}
         </nav>
 
         {showSearch && (
@@ -171,7 +172,7 @@ export function Navbar() {
                         onClick={() => setMenuOpen(false)}
                         className="flex items-center gap-2.5 px-4 py-2 text-sm text-gray-300 hover:bg-white/5 transition-colors"
                       >
-                        💜 Mi Wishlist
+                        💜 Mis Favoritos
                       </Link>
                     </div>
                     <div className="border-t border-white/5 pt-1">
