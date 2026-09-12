@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { useGame } from "../../context/GameContext";
 import { useAuth } from "../../context/AuthContext";
 import { ReviewList } from "../../components/ReviewList";
+import Sound from "../../components/admin/Sound";
 
 export function GameDetailPage() {
   const { id } = useParams<{ id: string }>();
@@ -120,7 +121,7 @@ export function GameDetailPage() {
                 {game.description}
               </p>
             </div>
-
+             <Sound game={game} />
             {/* Requisitos del sistema */}
             <div className="bg-[#0e0e18] border border-white/5 rounded-2xl p-6 shadow-lg">
               <h2 className="text-xs font-bold uppercase tracking-widest text-violet-400 mb-4">
