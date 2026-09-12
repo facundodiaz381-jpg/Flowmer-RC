@@ -1,31 +1,32 @@
-import React, { createContext, useState, useEffect, type ReactNode } from 'react';
+import { createContext, useState, useEffect, type ReactNode } from 'react';
+import { getWishlist, saveWishlist } from '../services/storageService';
 
-type WishlistState = string[];
-
-export interface WishlistContextType {
-  wishlistIds: WishlistState;
+interface WishlistContextType {
+  wishlistIds: string[];
   toggleWishlist: (id: string) => void;
   isInWishlist: (id: string) => boolean;
 }
 
-export const WishlistContext = createContext<WishlistContextType | undefined>(undefined);
-
-const LOCAL_STORAGE_KEY = 'flowmer_wishlist_ids';
+const WishlistContext = createContext<WishlistContextType | undefined>(undefined);
 
 export const WishlistProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [wishlistIds, setWishlistIds] = useState<WishlistState>(() => {
-    const storedIds = localStorage.getItem(LOCAL_STORAGE_KEY);
-    return storedIds ? JSON.parse(storedIds) : [];
+  const [wishlistIds, setWishlistIds] = useState<string[]>(() => {
+    // Carga los favoritos guardados previamente
+    const saved = getWishlist();
+    return saved ? saved.map((item) => String(item.gameId ?? item)) : [];
   });
 
   useEffect(() => {
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(wishlistIds));
+    // Sincroniza con localStorage cada vez que cambia la lista
+    const itemsToSave = wishlistIds.map((id) => ({ gameId: id }));
+    saveWishlist(itemsToSave as any);
   }, [wishlistIds]);
 
   const toggleWishlist = (id: string) => {
     setWishlistIds((prevIds) => {
-      if (prevIds.includes(id)) {
-        return prevIds.filter((existingId) => existingId !== id);
+      const exists = prevIds.includes(id);
+      if (exists) {
+        return prevIds.filter((item) => item !== id);
       } else {
         return [...prevIds, id];
       }
