@@ -1,19 +1,36 @@
-// En desarrollo por el equipo de trabajo
-// Módulo: Wishlist
-// Usar useGame() y useAuth() para obtener los juegos guardados del usuario
-// Los datos de wishlist están en localStorage (ver storageService)
-import { Link } from 'react-router-dom'
 
-export function WishlistPage() {
+import React from 'react';
+import { GameCard } from '../../components/GameCard';
+import useWishlist from '../../hooks/useWishlist';
+
+import  {seedData } from '../../data/seedData'; 
+import { products } from '../../interfaces/products.ts'; 
+const WishlistPage: React.FC = () => {
+  const { wishlistIds } = useWishlist();
+
+  const wishlistGames = seedData.filter((game: Game) => 
+    wishlistIds.includes(game.id)
+  );
+
   return (
-    <div className="min-h-screen bg-[#06060b] text-gray-100 px-6 pt-28 pb-20">
-      <div className="max-w-4xl mx-auto text-center space-y-4">
-        <h1 className="text-3xl font-bold text-white">Mi Lista de Deseados</h1>
-        <p className="text-gray-500 text-sm">En desarrollo por el equipo de trabajo</p>
-        <Link to="/" className="inline-block text-sm text-violet-400 hover:underline">
-          ← Volver al Catálogo
-        </Link>
-      </div>
+    <div className="wishlist-page">
+      <h1>Mi Wishlist de FLOWMER</h1>
+      <p className="count-info">Mostrando {wishlistGames.length} juegos guardados</p>
+      
+      { }
+      {wishlistGames.length === 0 ? (
+        <div className="empty-message">
+          <p>Tu wishlist está vacía. ¡Añade algunos juegos desde la tienda! 🤍</p>
+        </div>
+      ) : (
+        <div className="games-grid"> { }
+          {wishlistGames.map((game: Game) => (
+            <GameCard key={game.id} game={game} />
+          ))}
+        </div>
+      )}
     </div>
-  )
-}
+  );
+};
+
+export default WishlistPage;
