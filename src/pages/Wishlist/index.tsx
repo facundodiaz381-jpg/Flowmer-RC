@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useWishlist } from "../../hooks";
+import { useWishlist } from "../../hooks/useWishlist";
 import { useGame } from "../../context/GameContext";
 import { GameCard } from "../../components/GameCard";
 import type { Game } from "../../interfaces";
