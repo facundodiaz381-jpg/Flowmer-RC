@@ -17,6 +17,7 @@ export const seedGames: Game[] = [
       "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1091500/e9047d8ec47ae3d94bb8b464fb0fc9e9972b4ac7/header.jpg?t=1784714077",
     trailerUrl: "https://www.youtube.com/embed/vjF9GgrY9c0",
     developer: "CD Projekt Red",
+    sound:"https://youtube.com/playlist?list=PLDisKgcnAC4SqX0mi1J5_gd7-hrIS5yJp&si=GpqqsjvthnxV_Y5F",
     systemRequirements: {
       os: "Windows 10 (64-bit)",
       processor: "Intel Core i5-3570K / AMD FX-8310",
@@ -39,6 +40,7 @@ export const seedGames: Game[] = [
       "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/730/162664aa5da85f418105350c5d67ca565f6c3713/header.jpg?t=1784564069",
     trailerUrl: "https://www.youtube.com/embed/edYCtaNueQY",
     developer: "Valve",
+    sound:"",
     systemRequirements: {
       os: "Windows 10 (64-bit)",
       processor: "CPU de 4 hilos físicos - Intel Core i5-750 o superior",
@@ -61,6 +63,7 @@ export const seedGames: Game[] = [
       "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1174180/header.jpg?t=1759502961",
     trailerUrl: "https://www.youtube.com/embed/eaW0tIObfcU",
     developer: "Rockstar Games",
+    sound:"",
     systemRequirements: {
       os: "Windows 10/11 (64-bit)",
       processor: "Intel Core i7-6700K / AMD Ryzen 5 1500X",
@@ -83,6 +86,7 @@ export const seedGames: Game[] = [
       "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1551360/header.jpg?t=1787677939",
     trailerUrl: "https://www.youtube.com/embed/FYH9n37B7Yw",
     developer: "Playground Games",
+    sound:"",
     systemRequirements: {
       os: "Windows 10 (64-bit)",
       processor: "Intel Core i5-8400 / AMD Ryzen 5 1500X",
@@ -105,6 +109,7 @@ export const seedGames: Game[] = [
       "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/990080/a3cdc6f40d97df8ac993679c2dd1edeb5222421e/header.jpg?t=1788224492",
     trailerUrl: "https://www.youtube.com/embed/1O6Qstncpnc",
     developer: "WB Games",
+    sound:"",
     systemRequirements: {
       os: "Windows 10/11 (64-bit)",
       processor: "Intel Core i5-7500 / AMD Ryzen 3 1200",
@@ -127,6 +132,7 @@ export const seedGames: Game[] = [
       "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3240220/header.jpg?t=1781187782",
     trailerUrl: "https://www.youtube.com/embed/QkkoHAzjinY",
     developer: "Rockstar Games",
+    sound:"",
     systemRequirements: {
       os: "Windows 10/11 (64-bit)",
       processor: "Intel Core i5-3470 / AMD X8 FX-8350",
@@ -149,6 +155,7 @@ export const seedGames: Game[] = [
       "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1671210/7ccda5b1631d2e60cc756a3271e845dbb9168821/header.jpg?t=1782314340",
     trailerUrl: "https://www.youtube.com/embed/yDzgiGdekas?si=Lwj-_9_39Bz9Fgra",
     developer: "Toby Fox",
+    sound:"",
     systemRequirements: {
       os: "Windows 10",
       processor: "Intel i2",
@@ -163,7 +170,7 @@ export const seedGames: Game[] = [
     id: 8,
     title: "PHIGHTING!",
     description:
-      "Forma equipo con otros cuatro jugadores para aniquilar y conquistar contra tus enemigos con 15 personajes jugables y más de 25 mapas para luchar. Disfruta de las PHIGHT contra otros jugadores, vence oleadas de zombis en Crossroads Must Fall o simplemente pasa el rato en Crossroads, ¡pero siempre prepárate para PHIGHT!.",
+      "Forma equipo con otros cuatro jugadores para aniquilar y conquistar el contra tus enemigos con 15 personajes jugables y más de 25 mapas para luchar. Disfruta de las PHIGHT contra otros jugadores, vence oleadas de zombis en Crossroads Must Fall o simplemente pasa el rato en Crossroads, ¡pero siempre prepárate para PHIGHT!.",
     price: 0.0,
     category: "Action",
     genre: "Shotter/Peleas",
@@ -171,6 +178,7 @@ export const seedGames: Game[] = [
       "https://cdn.discordapp.com/attachments/1003919647151771658/1538970748654325801/notext.png?ex=6aa59333&is=6aa441b3&hm=a5b001d844b3abb7955fb19bb622f805d24e032aa540cb7723ac3b67c179354c",
     trailerUrl: "https://www.youtube.com/embed/Z3WLIpLDFtE?si=u_3ra7-By0e6QPYj",
     developer: "Boggio",
+    sound:"",
     systemRequirements: {
       os: "Windows 10",
       processor: "Intel i3",
@@ -193,6 +201,7 @@ export const seedGames: Game[] = [
       "https://tr.rbxcdn.com/180DAY-eb504a9465f6807fb8bc31c8f070c090/768/432/Image/Webp/noFilter",
     trailerUrl: "https://www.youtube.com/embed/kXBP1QeLw3w?si=wUYtUEV3iZJzRMhU",
     developer: "Spaceman Moonbase",
+    sound:"",
     systemRequirements: {
       os: "Windows 10",
       processor: "Intel i3",
@@ -215,6 +224,7 @@ export const seedGames: Game[] = [
       "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1030300/7983574d464e6559ac7e24275727f73a8bcca1f3/header.jpg?t=1776125736",
     trailerUrl: "https://www.youtube.com/embed/6XGeJwsUP9c?si=PURcohLOzxsngFVA",
     developer: "Team Cherry",
+    sound:"",
     systemRequirements: {
       os: "Windows 10",
       processor: "Intel i3",
