@@ -1,5 +1,5 @@
 // GameContext — estado global del catálogo de juegos, reseñas, votos y wishlist.
-// Persiste todos los cambios en localStorage a través de storageService.
+
 
 import { createContext, useContext, useState } from "react";
 import type { ReactNode } from "react";
