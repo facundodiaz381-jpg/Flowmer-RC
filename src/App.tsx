@@ -9,15 +9,14 @@ import { Navbar } from "./components/Navbar";
 function App() {
   return (
     <BrowserRouter>
-      {}
-      <WishlistProvider> 
         <AuthProvider>
+          <WishlistProvider>
           <GameProvider>
             <Navbar />
             <AppRoutes />
           </GameProvider>
+          </WishlistProvider>
         </AuthProvider>
-      </WishlistProvider> 
     </BrowserRouter>
   );
 }
