@@ -4,9 +4,11 @@ import { AuthProvider } from "./context/AuthContext";
 import { GameProvider } from "./context/GameContext";
 import { AppRoutes } from "./routes/AppRoutes";
 import { Navbar } from "./components/Navbar";
+import { WishlistProvider } from './context/WishlistContext';
 
 function App() {
   return (
+    <WishlistProvider>
     <BrowserRouter>
       <AuthProvider>
         <GameProvider>
@@ -15,6 +17,7 @@ function App() {
         </GameProvider>
       </AuthProvider>
     </BrowserRouter>
+</WishlistProvider>
   );
 }
 
