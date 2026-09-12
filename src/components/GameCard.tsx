@@ -1,4 +1,5 @@
 
+import React from "react";
 import { Link } from "react-router-dom";
 import type { Game } from "../interfaces/products"; 
 import { useWishlist } from "../hooks/useWishlist"; 
@@ -22,7 +23,6 @@ export function GameCard({ game }: GameCardProps) {
       to={`/game/${game.id}`}
       className="group bg-[#0e0e18] rounded-xl overflow-hidden border border-white/5 hover:border-violet-500/30 transition-all duration-300 hover:shadow-xl hover:shadow-violet-500/5 hover:-translate-y-1 cursor-pointer flex flex-col"
     >
-      {}
       <div className="relative overflow-hidden aspect-video">
         <img
           src={game.image}
@@ -31,7 +31,6 @@ export function GameCard({ game }: GameCardProps) {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0e0e18] via-transparent to-transparent opacity-60" />
 
-        {}
         <button
           type="button"
           onClick={handleWishlistClick}
@@ -45,7 +44,6 @@ export function GameCard({ game }: GameCardProps) {
           <span className="text-xs leading-none">{isFavorite ? "💜" : "🤍"}</span>
         </button>
 
-        {}
         <div className="absolute top-3 right-3 bg-black/60 backdrop-blur-sm border border-white/10 px-3 py-1 rounded-lg">
           <span className="text-sm font-bold text-white">
             {game.price === 0 ? (
@@ -57,7 +55,6 @@ export function GameCard({ game }: GameCardProps) {
         </div>
       </div>
 
-      {}
       <div className="p-4 flex-1 flex flex-col justify-between">
         <div>
           <div className="flex items-center gap-2 mb-2">
@@ -77,7 +74,6 @@ export function GameCard({ game }: GameCardProps) {
           </p>
         </div>
 
-        {}
         <div className="flex items-center justify-between mt-4 pt-3 border-t border-white/5 text-xs">
           <span className="text-gray-600 truncate max-w-[140px]">
             {game.developer}
