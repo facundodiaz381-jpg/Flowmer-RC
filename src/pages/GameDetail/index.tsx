@@ -3,7 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { useGame } from "../../context/GameContext";
 import { useAuth } from "../../context/AuthContext";
 import { ReviewList } from "../../components/ReviewList";
-import Sound from "../../components/admin/Sound";
+import Sound from "../../components/Sound";
 
 export function GameDetailPage() {
   const { id } = useParams<{ id: string }>();

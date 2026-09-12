@@ -1,4 +1,4 @@
-import type { Game } from "../../interfaces/products";
+import type { Game } from "../interfaces/products";
 
 type GameCardProps = {
   game: Game;
@@ -45,7 +45,7 @@ export function Sound({ game }: GameCardProps) {
   <div className="p-3 sm:p-4 flex-1 flex flex-col justify-between">
     <div>
       <p className="text-sm sm:text-base text-white break-words">
-        Compra la Banda Sonora para apoyar a {game.developer}.
+        Escucha La Asombrosa Banda Sonora de {game.developer}.
       </p>
       <div className="flex justify-start bg-violet-600 backdrop-blur-sm border border-white/10 px-3 py-1 rounded-3xs rounded-xl">
       <p className="font-sans">FlowMer Te Recomienda: {game.rec}</p>
