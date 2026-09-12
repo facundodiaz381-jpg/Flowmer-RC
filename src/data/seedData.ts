@@ -137,4 +137,92 @@ export const seedGames: Game[] = [
     upvotes: 3400,
     downvotes: 210,
   },
+  {
+    id: 7,
+    title: "Deltarune",
+    description:
+      "¡Sumérgete en la historia paralela de UNDERTALE! Lucha o perdona en intensas batallas mientras exploras un mundo misterioso junto a un entrañable elenco de personajes nuevos y conocidos.",
+    price: 24.99,
+    category: "RPG",
+    genre: "Indie/Rol",
+    image:
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1671210/7ccda5b1631d2e60cc756a3271e845dbb9168821/header.jpg?t=1782314340",
+    trailerUrl: "https://www.youtube.com/embed/yDzgiGdekas",
+    developer: "Toby Fox",
+    systemRequirements: {
+      os: "Windows 10",
+      processor: "Intel i2",
+      memory: "2 GB de RAM",
+      graphics: "128 mb",
+      storage: "1 GB de espacio disponible",
+    },
+    upvotes: 4000,
+    downvotes: 2,
+  },
+  {
+    id: 8,
+    title: "PHIGHTING!",
+    description:
+      "Forma equipo con otros cuatro jugadores para aniquilar y conquistar contra tus enemigos con 15 personajes jugables y más de 25 mapas para luchar.",
+    price: 0.0,
+    category: "Action",
+    genre: "Shooter/Peleas",
+    image:
+      "https://cdn.discordapp.com/attachments/1003919647151771658/1538970748654325801/notext.png?ex=6aa59333&is=6aa441b3&hm=a5b001d844b3abb7955fb19bb622f805d24e032aa540cb7723ac3b67c179354c",
+    trailerUrl: "https://www.youtube.com/embed/Z3WLIpLDFtE",
+    developer: "Boggio",
+    systemRequirements: {
+      os: "Windows 10",
+      processor: "Intel i3",
+      memory: "4 GB de RAM",
+      graphics: "128 mb",
+      storage: "1 GB de espacio disponible",
+    },
+    upvotes: 6000,
+    downvotes: 300,
+  },
+  {
+    id: 9,
+    title: "Block Tales",
+    description:
+      "Juego de rol multijugador por turnos inspirado en Paper Mario 64 y Earthbound. Disponible para PC, dispositivos móviles/tabletas y consolas.",
+    price: 0.0,
+    category: "RPG",
+    genre: "Pelea por turnos/Historia",
+    image:
+      "https://tr.rbxcdn.com/180DAY-eb504a9465f6807fb8bc31c8f070c090/768/432/Image/Webp/noFilter",
+    trailerUrl: "https://www.youtube.com/embed/kXBP1QeLw3w",
+    developer: "Spaceman Moonbase",
+    systemRequirements: {
+      os: "Windows 10",
+      processor: "Intel i3",
+      memory: "2 GB de RAM",
+      graphics: "128 mb",
+      storage: "1 GB de espacio disponible",
+    },
+    upvotes: 9800,
+    downvotes: 300,
+  },
+  {
+    id: 10,
+    title: "Hollow Knight: Silksong",
+    description:
+      "¡Descubre un vasto reino embrujado en Hollow Knight: Silksong! Explora, lucha y sobrevive mientras asciendes a la cima de un vasto reino gobernado por la seda y el canto.",
+    price: 24.99,
+    category: "Metroidvania",
+    genre: "Indie/Peleas",
+    image:
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1030300/7983574d464e6559ac7e24275727f73a8bcca1f3/header.jpg?t=1776125736",
+    trailerUrl: "https://www.youtube.com/embed/6XGeJwsUP9c",
+    developer: "Team Cherry",
+    systemRequirements: {
+      os: "Windows 10",
+      processor: "Intel i3",
+      memory: "4 GB de RAM",
+      graphics: "GeForce GTX 560 Ti (1GB), Radeon HD 7750 (1GB)",
+      storage: "8 GB de espacio disponible",
+    },
+    upvotes: 7000,
+    downvotes: 200,
+  },
 ];
