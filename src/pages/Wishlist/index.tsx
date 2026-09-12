@@ -1,14 +1,14 @@
 
 import React from 'react';
 import { GameCard } from '../../components/GameCard';
-import useWishlist from '../../hooks/useWishlist';
+import {useWishlist} from '../../hooks/useWishlist';
 
 import  {seedData } from '../../data/seedData'; 
 import { products } from '../../interfaces/products.ts'; 
 const WishlistPage: React.FC = () => {
   const { wishlistIds } = useWishlist();
 
-  const wishlistGames = seedData.filter((game: Game) => 
+  const wishlistGames = seedData.filter((game: products) => 
     wishlistIds.includes(game.id)
   );
 
