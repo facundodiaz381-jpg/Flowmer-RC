@@ -1,4 +1,3 @@
-// Navbar principal de FlowMer — glassmorphism estilo Steam
 import { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
@@ -56,6 +55,12 @@ export function Navbar() {
             className={`text-[13px] font-medium px-3 py-1.5 rounded-md transition-all duration-200 ${isActive("/about") ? "text-white bg-white/10" : "text-gray-400 hover:text-white hover:bg-white/5"}`}
           >
             About
+          </Link>
+          <Link
+            to="/wishlist"
+            className={`text-[13px] font-medium px-3 py-1.5 rounded-md transition-all duration-200 ${isActive("/wishlist") ? "text-white bg-white/10" : "text-gray-400 hover:text-white hover:bg-white/5"}`}
+          >
+            Mis Favoritos
           </Link>
         </nav>
 

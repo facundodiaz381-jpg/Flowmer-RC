@@ -1,12 +1,11 @@
-import React, { createContext, useState, useEffect, ReactNode } from 'react';
+import { createContext, useState, useEffect, type ReactNode } from 'react';
 
-// Estado simple: solo guardamos los IDs de los juegos "likeados".
-type WishlistState = string[];
+type WishlistState = (string | number)[];
 
 interface WishlistContextType {
   wishlistIds: WishlistState;
-  toggleWishlist: (id: string) => void;
-  isInWishlist: (id: string) => boolean;
+  toggleWishlist: (id: string | number) => void;
+  isInWishlist: (id: string | number) => boolean;
 }
 
 const WishlistContext = createContext<WishlistContextType | undefined>(undefined);
@@ -14,30 +13,26 @@ const WishlistContext = createContext<WishlistContextType | undefined>(undefined
 const LOCAL_STORAGE_KEY = 'flowmer_wishlist_ids';
 
 export const WishlistProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  // Carga el estado inicial desde LocalStorage en el inicio
   const [wishlistIds, setWishlistIds] = useState<WishlistState>(() => {
     const storedIds = localStorage.getItem(LOCAL_STORAGE_KEY);
     return storedIds ? JSON.parse(storedIds) : [];
   });
 
-  // Guarda el estado en LocalStorage automáticamente cuando cambia
   useEffect(() => {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(wishlistIds));
   }, [wishlistIds]);
 
-  const toggleWishlist = (id: string) => {
+  const toggleWishlist = (id: string | number) => {
     setWishlistIds((prevIds) => {
       if (prevIds.includes(id)) {
-        // Si ya existe, lo eliminamos (dislike)
         return prevIds.filter((existingId) => existingId !== id);
       } else {
-        // Si no existe, lo añadimos (like)
         return [...prevIds, id];
       }
     });
   };
 
-  const isInWishlist = (id: string) => wishlistIds.includes(id);
+  const isInWishlist = (id: string | number) => wishlistIds.includes(id);
 
   return (
     <WishlistContext.Provider value={{ wishlistIds, toggleWishlist, isInWishlist }}>
