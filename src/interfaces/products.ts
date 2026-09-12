@@ -20,6 +20,8 @@ export interface Game {
   image: string;         // URL de la imagen de portada
   trailerUrl?: string;   // URL de embed de YouTube (opcional)
   developer: string;
+  sound: string;
+  mprice:number,
   systemRequirements: SystemRequirements;
   upvotes: number;
   downvotes: number;
