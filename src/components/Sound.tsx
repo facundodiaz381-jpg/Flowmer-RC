@@ -55,7 +55,7 @@ export function Sound({ game }: GameCardProps) {
           </p>
           <div className="bg-violet-600/30 border border-violet-500/30 px-3 py-1.5 rounded-xl">
             <p className="text-xs text-violet-200">
-              <span className="font-semibold text-white">FlowMer te recomienda:</span> {mrec}
+              <span className="font-semibold text-white">FlowMer Dice Que Escuches:</span> {mrec}
             </p>
           </div>
         </div>

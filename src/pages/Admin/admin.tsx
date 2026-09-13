@@ -1,4 +1,5 @@
-// Placeholder de AdminDashboard listo para implementar el CRUD
+// Panel de administración
+
 import { useState } from "react";
 import type { ChangeEvent } from "react";
 import { Link } from "react-router-dom";
@@ -46,10 +47,11 @@ const emptyForm: FormData = {
 };
 
 export function Admin() {
-  const { games, addGame, updateGame, deleteGame } = useGame();
+  
   const [editing, setEditing] = useState<Game | null>(null);
   const [form, setForm] = useState<FormData>(emptyForm);
-
+  
+  const { games, addGame, updateGame, deleteGame } = useGame();
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -102,6 +104,7 @@ export function Admin() {
 
   const editGame = (game: Game) => {
     setEditing(game);
+
     setForm({
       title: game.title,
       description: game.description,
@@ -128,12 +131,16 @@ export function Admin() {
   };
 
   return (
-    <main className="min-h-screen bg-[#0B0B10] p-6 text-white">
-      <div className="mx-auto mb-6 flex max-w-5xl items-center justify-between">
-        <h1 className="text-3xl font-bold text-[#7B3FA6]">
+    <main className="min-h-screen overflow-x-hidden bg-[#0B0B10] p-4 text-white sm:p-6">
+      <div className="mx-auto mb-6 flex max-w-5xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <h1 className="text-2xl font-bold text-[#7B3FA6] sm:text-3xl">
           Panel de Administración
         </h1>
-        <Link to="/" className="text-sm text-violet-400 hover:underline">
+
+        <Link
+          to="/"
+          className="w-fit text-sm text-violet-400 hover:underline"
+        >
           ← Volver a la Tienda
         </Link>
       </div>
@@ -146,6 +153,7 @@ export function Admin() {
           onSave={saveGame}
           onCancel={cancelEdit}
         />
+
         <AdminGameList
           games={games}
           onEdit={editGame}
@@ -154,4 +162,4 @@ export function Admin() {
       </div>
     </main>
   );
-}
+};

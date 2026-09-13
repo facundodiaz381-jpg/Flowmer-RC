@@ -20,7 +20,7 @@ export const seedGames: Game[] = [
     developer: "CD Projekt Red",
     sound: "https://youtube.com/playlist?list=PLDisKgcnAC4SqX0mi1J5_gd7-hrIS5yJp&si=GpqqsjvthnxV_Y5F",
     mprice: 15.00,
-    mrec: "No Hay recomendacion todavia🥀",
+    mrec: "Black Dog",
     systemRequirements: {
       os: "Windows 10 (64-bit)",
       processor: "Intel Core i5-3570K / AMD FX-8310",
@@ -46,7 +46,7 @@ export const seedGames: Game[] = [
     developer: "Valve",
     sound: "https://youtube.com/playlist?list=PLyaZgTGCYP7Tvnr2t15_wDTWwL_PIe-Y5&si=wFl_zjfkGhqkPghC",
     mprice: 15.00,
-    mrec: "No Hay recomendacion todavia🥀",
+    mrec: "Round MVP Anthem",
     systemRequirements: {
       os: "Windows 10 (64-bit)",
       processor: "CPU de 4 hilos físicos - Intel Core i5-750 o superior",
@@ -68,11 +68,11 @@ export const seedGames: Game[] = [
     genre: "Acción / Western",
     image:
       "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1174180/header.jpg?t=1759502961",
-    trailerUrl: "https://www.youtube.com/embed/eaW0tIObfcU",
+    trailerUrl: "https://www.youtube.com/embed/eaW0tYpxyp0?si=HXQl8jJ2-U9n3V83",
     developer: "Rockstar Games",
     sound: "https://youtube.com/playlist?list=PL7e-65HqcGc8Sr1kuyVZBl9XFn5KtgX7d&si=E9nZtHaiqY93zjnV",
     mprice: 15.00,
-    mrec: "No Hay recomendacion todavia🥀",
+    mrec: "Aftermath of Genesis",
     systemRequirements: {
       os: "Windows 10/11 (64-bit)",
       processor: "Intel Core i7-6700K / AMD Ryzen 5 1500X",
@@ -98,7 +98,7 @@ export const seedGames: Game[] = [
     developer: "Playground Games",
     sound: "https://youtube.com/playlist?list=PLse0hudmxeoN6KbCncwiAuFlQco_lBg15&si=Zks2RucVEdZBfgQK",
     mprice: 15.00,
-    mrec: "No Hay recomendacion todavia🥀",
+    mrec: "Midnight Sun",
     systemRequirements: {
       os: "Windows 10 (64-bit)",
       processor: "Intel Core i5-8400 / AMD Ryzen 5 1500X",
@@ -124,7 +124,7 @@ export const seedGames: Game[] = [
     developer: "WB Games",
     sound: "https://youtube.com/playlist?list=PLBKadB95sF47AC0QgG8Eiuc8qaPtoJ6KA&si=IhYMcA_rU9FZydkN",
     mprice: 15.00,
-    mrec: "No Hay recomendacion todavia🥀",
+    mrec: "Soaring over Hogwarts",
     systemRequirements: {
       os: "Windows 10/11 (64-bit)",
       processor: "Intel Core i5-7500 / AMD Ryzen 3 1200",
@@ -146,11 +146,11 @@ export const seedGames: Game[] = [
     genre: "Acción / Mundo Abierto",
     image:
       "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3240220/header.jpg?t=1781187782",
-    trailerUrl: "https://www.youtube.com/embed/QkkoHAzjinY",
+    trailerUrl: "https://www.youtube.com/embed/hvoD7ehZPcM?si=kFCf-roby49YRkvu",
     developer: "Rockstar Games",
     sound: "https://youtube.com/playlist?list=PLniAE5ZVzgJ72qmrW0BGgNzr2RspMx3Sg&si=6L_tRNkW5oO_L3C0",
     mprice: 15.00,
-    mrec: "No Hay recomendacion todavia🥀",
+    mrec: "Throw Down",
     systemRequirements: {
       os: "Windows 10/11 (64-bit)",
       processor: "Intel Core i5-3470 / AMD X8 FX-8350",
@@ -191,7 +191,7 @@ export const seedGames: Game[] = [
     id: 8,
     title: "PHIGHTING!",
     description:
-      "Forma equipo con otros cuatro jugadores para aniquilar y conquistar el contra tus enemigos con 15 personajes jugables y más de 25 mapas para luchar. Disfruta de las PHIGHT contra otros jugadores, vence oleadas de zombis en Crossroads Must Fall o simplemente pasa el rato en Crossroads, ¡pero siempre prepárate para PHIGHT!.",
+      "Forma equipo con otros cuatro jugadores para aniquilar y conquistar el punto contra tus enemigos con 15 personajes jugables y más de 25 mapas para luchar. Disfruta de las PHIGHT contra otros jugadores, vence oleadas de zombis en Crossroads Must Fall o simplemente pasa el rato en Crossroads, ¡pero siempre prepárate para PHIGHT!.",
     rec: true,
     price: 0.0,
     category: "Action",
@@ -202,7 +202,7 @@ export const seedGames: Game[] = [
     developer: "Boggio",
     sound: "https://youtube.com/playlist?list=PLyqedVKgyTiqnMMjvp5YXbYT8GlN-DDL9&si=4F1uQbQCjz04p_Wr",
     mprice: 0.0,
-    mrec: "THE FLIPSIDE, DEVIL'S PANDEMONIUM, SENSORY OVERLOAD, SOLAR ECLIPSE, CAPPUCCINO CRESCENDO, BELOVED MEMORIES, THE MOST WANTED, CALL OF THE HEIGHTS, WATCH YOUR ALTITUDE, EDGE OF INPHINITY y SUM PPL",
+    mrec: "THE FLIPSIDE, DEVIL'S PANDEMONIUM, SENSORY OVERLOAD, SOLAR ECLIPSE, CAPPUCCINO CRESCENDO, BELOVED MEMORIES, THE MOST WANTED, CALL OF THE HEIGHTS, WATCH YOUR ALTITUDE, EDGE OF INPHINITY, SUM PPL y BETTER LATE THAN NEVA",
     systemRequirements: {
       os: "Windows 10",
       processor: "Intel i3",
@@ -328,7 +328,7 @@ export const seedGames: Game[] = [
     genre: "Ritmo/Editor de niveles",
     image:
       "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/322170/header.jpg?t=1775300400",
-    trailerUrl: "https://www.youtube.com/embed/79RwQe6EN_4?si=JYiYxCrv-CeyEc4w",
+    trailerUrl: "https://www.youtube.com/embed/LxA4NJMiZ8o?si=ASJFFwS5HTrhH2oe",
     developer: "RobTop Games",
     sound: "https://youtube.com/playlist?list=PLnaJlq-zKc0WUXhwhSowwJdpe1fZumJzd&si=y55okGYdb7Ud9zcQ",
     mprice: 1.00,
@@ -339,6 +339,31 @@ export const seedGames: Game[] = [
       memory: "512 MB de RAM",
       graphics: "32 MB",
       storage: " 100 MB de espacio disponible",
+    },
+    upvotes: 9000,
+    downvotes: 50,
+  },{
+    id: 14,
+    title: "Mortal Kombat 11",
+    description:
+      "Mortal Kombat ha regresado mejor que nunca en esta entrega de la icónica saga.",
+    rec: true,
+    price: 34.99,
+    category: "Pelea",
+    genre: "Violento/Accion",
+    image:
+      "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/976310/header.jpg?t=1780429525",
+    trailerUrl: "https://www.youtube.com/embed/7zwQPJmg-Kg?si=UHk86OgWxDFwzMmV",
+    developer: "NetherRealm Studios",
+    sound: "https://youtube.com/playlist?list=PLDisKgcnAC4QQutzGkQ7T5JpODtRNOrXC&si=IEBYaM5Nldh-e7-3",
+    mprice: 15.00,
+    mrec: "Black Dragon",
+    systemRequirements: {
+      os: "Windows 10",
+      processor: " Intel Core i5-750, 2.66 GHz / AMD Phenom II X4 965, 3.4 GHz or AMD Ryzen™ 3 1200, 3.1 GHz",
+      memory: "8 GB de Ram",
+      graphics: "NVIDIA® GeForce™ GTX 670 or NVIDIA® GeForce™ GTX 1050 / AMD® Radeon™ HD 7950 or AMD® Radeon™ R9 270",
+      storage: "50 GB de Almacenamiento",
     },
     upvotes: 9000,
     downvotes: 50,
