@@ -1,4 +1,5 @@
-// Página de detalle de un juego — Diseño Premium estilo Steam con tráiler de YouTube
+// GameDetailPage — página de detalle estilo Steam con tráiler, compra, wishlist y votos.
+// TODO: implementar formulario de reseña (addReview está disponible en useGame).
 import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useGame } from "../../context/GameContext";

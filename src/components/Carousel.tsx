@@ -1,4 +1,5 @@
-// HeroCarousel estilo Steam Store: Banner principal + Sidebar con miniaturas
+// HeroCarousel estilo Steam: Banner principal + Sidebar de miniaturas.
+// Auto-avanza cada 6 s. Solo muestra los primeros 4 juegos del catálogo.
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import type { Game } from "../interfaces";
@@ -11,6 +12,7 @@ export function HeroCarousel({ games }: HeroCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const featuredGames = games.slice(0, 4);
 
+  // Dep en .length (no en el array) para no re-crear el intervalo con cada voto/wishlist
   useEffect(() => {
     if (featuredGames.length === 0) return;
     const timer = setInterval(() => {

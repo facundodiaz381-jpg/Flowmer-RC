@@ -1,4 +1,5 @@
-// Footer compacto estilo Steam para FlowMer — responsive (móvil y desktop)
+// Footer de FlowMer — responsive.
+// Los links legales apuntan a '/404' como placeholder hasta tener páginas reales.
 import { Link } from "react-router-dom";
 
 export function Footer() {
