@@ -14,12 +14,16 @@ export interface Game {
   id: number;
   title: string;
   description: string;
+  rec: boolean;         // Recomendación del juego
   price: number;         // En USD. 0 = GRATIS
   category: string;      // Ej: "RPG", "Shooter", "Racing"
   genre: string;         // Ej: "Acción / Cyberpunk"
   image: string;         // URL de la imagen de portada
   trailerUrl?: string;   // URL de embed de YouTube (opcional)
   developer: string;
+  sound: string;        //link de la playlist
+  mprice:number,        //precio de la playlist
+  rec:string;           //musica de la playlists que recomendamos
   systemRequirements: SystemRequirements;
   upvotes: number;
   downvotes: number;
