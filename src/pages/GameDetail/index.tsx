@@ -1,5 +1,4 @@
 // GameDetailPage — página de detalle estilo Steam con tráiler, compra, wishlist y votos.
-// TODO: implementar formulario de reseña (addReview está disponible en useGame).
 import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useGame } from "../../context/GameContext";
@@ -40,9 +39,20 @@ export function GameDetailPage() {
     (w) => w.userId === currentUserId && w.gameId === game.id,
   );
 
-  const totalVotes = game.upvotes + game.downvotes;
+  const upvotes = typeof game.upvotes === "number" ? game.upvotes : 0;
+  const downvotes = typeof game.downvotes === "number" ? game.downvotes : 0;
+  const totalVotes = upvotes + downvotes;
   const positivePercent =
-    totalVotes > 0 ? Math.round((game.upvotes / totalVotes) * 100) : 0;
+    totalVotes > 0 ? Math.round((upvotes / totalVotes) * 100) : 0;
+
+  const price = typeof game.price === "number" ? game.price : 0;
+  const systemRequirements = game.systemRequirements || {
+    os: "Windows 10 / 11",
+    processor: "Intel / AMD",
+    memory: "8 GB RAM",
+    graphics: "NVIDIA / AMD",
+    storage: "Espacio disponible requerido",
+  };
 
   function handleVote(type: "up" | "down"): void {
     if (!currentUser) return;
@@ -89,14 +99,14 @@ export function GameDetailPage() {
           <p className="text-gray-400 text-sm mt-1">
             Desarrollado por{" "}
             <span className="text-gray-200 font-semibold">
-              {game.developer}
+              {game.developer || "Desconocido"}
             </span>
           </p>
         </div>
 
         {/* Grilla Principal (12 columnas) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          {/* Columna Izquierda: Tráiler / Video + Descripción + Reseñas (7 u 8 columnas) */}
+          {/* Columna Izquierda: Tráiler / Video + Descripción + Requisitos + Reseñas */}
           <div className="lg:col-span-7 flex flex-col gap-6">
             {/* Tráiler de Video en HD estilo Steam / YouTube */}
             {game.trailerUrl ? (
@@ -128,14 +138,17 @@ export function GameDetailPage() {
                 {game.description}
               </p>
             </div>
-             <Sound game={game} />
+
+            {/* Soundtrack */}
+            <Sound game={game} />
+
             {/* Requisitos del sistema */}
             <div className="bg-[#0e0e18] border border-white/5 rounded-2xl p-6 shadow-lg">
               <h2 className="text-xs font-bold uppercase tracking-widest text-violet-400 mb-4">
                 Requisitos del sistema
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {Object.entries(game.systemRequirements).map(([key, value]) => (
+                {Object.entries(systemRequirements).map(([key, value]) => (
                   <div
                     key={key}
                     className="bg-white/5 border border-white/5 rounded-xl p-3.5"
@@ -144,7 +157,7 @@ export function GameDetailPage() {
                       {key}
                     </span>
                     <span className="text-gray-200 text-xs md:text-sm font-medium">
-                      {value}
+                      {String(value)}
                     </span>
                   </div>
                 ))}
@@ -175,10 +188,10 @@ export function GameDetailPage() {
                     Precio oficial
                   </span>
                   <span className="text-3xl font-black text-white">
-                    {game.price === 0 ? (
+                    {price === 0 ? (
                       <span className="text-emerald-400">GRATIS</span>
                     ) : (
-                      `$${game.price.toFixed(2)}`
+                      `$${price.toFixed(2)}`
                     )}
                   </span>
                 </div>
@@ -251,7 +264,7 @@ export function GameDetailPage() {
                       : "bg-white/5 border-white/10 text-gray-400 hover:border-green-500/50 hover:text-green-300"
                   } disabled:opacity-40 disabled:cursor-not-allowed`}
                 >
-                  👍 <span>{game.upvotes.toLocaleString()}</span>
+                  👍 <span>{upvotes.toLocaleString()}</span>
                 </button>
                 <button
                   onClick={() => handleVote("down")}
@@ -262,7 +275,7 @@ export function GameDetailPage() {
                       : "bg-white/5 border-white/10 text-gray-400 hover:border-red-500/50 hover:text-red-300"
                   } disabled:opacity-40 disabled:cursor-not-allowed`}
                 >
-                  👎 <span>{game.downvotes.toLocaleString()}</span>
+                  👎 <span>{downvotes.toLocaleString()}</span>
                 </button>
               </div>
 

@@ -40,8 +40,13 @@ export function initStorage(): void {
     localStorage.setItem(KEYS.games, JSON.stringify(seedGames));
   } else {
     const parsedGames = JSON.parse(existingGamesRaw) as Game[];
-    const needsTrailerSync = !parsedGames.some((g) => Boolean(g.trailerUrl));
-    if (needsTrailerSync) {
+    const needsSync =
+      !parsedGames.some((g) => Boolean(g.sound)) ||
+      parsedGames.some(
+        (g) => !g.systemRequirements || typeof g.mprice !== "number"
+      );
+
+    if (needsSync) {
       localStorage.setItem(KEYS.games, JSON.stringify(seedGames));
     } else {
       const missingSeedGames = seedGames.filter(
