@@ -40,16 +40,19 @@ export function initStorage(): void {
     localStorage.setItem(KEYS.games, JSON.stringify(seedGames));
   } else {
     const parsedGames = JSON.parse(existingGamesRaw) as Game[];
-    // Forzar re-seed si: ningún juego tiene trailerUrl O el primer juego difiere del seed
-   // Agrega juegos nuevos sin borrar los datos ya guardados.
-    const missingSeedGames = seedGames.filter(
-      (seedGame) => !parsedGames.some((game) => game.id === seedGame.id)
-    );
-    if (missingSeedGames.length > 0) {
-      localStorage.setItem(
-        KEYS.games,
-        JSON.stringify([...parsedGames, ...missingSeedGames])
+    const needsTrailerSync = !parsedGames.some((g) => Boolean(g.trailerUrl));
+    if (needsTrailerSync) {
+      localStorage.setItem(KEYS.games, JSON.stringify(seedGames));
+    } else {
+      const missingSeedGames = seedGames.filter(
+        (seedGame) => !parsedGames.some((game) => game.id === seedGame.id)
       );
+      if (missingSeedGames.length > 0) {
+        localStorage.setItem(
+          KEYS.games,
+          JSON.stringify([...parsedGames, ...missingSeedGames])
+        );
+      }
     }
   }
 

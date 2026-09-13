@@ -68,7 +68,7 @@ export const seedGames: Game[] = [
     genre: "Acción / Western",
     image:
       "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1174180/header.jpg?t=1759502961",
-    trailerUrl: "https://www.youtube.com/embed/eaW0tIObfcU",
+    trailerUrl: "https://www.youtube.com/embed/gmA6MrX81z4",
     developer: "Rockstar Games",
     sound:"https://youtube.com/playlist?list=PL7e-65HqcGc8Sr1kuyVZBl9XFn5KtgX7d&si=E9nZtHaiqY93zjnV",
     mprice:15.00,

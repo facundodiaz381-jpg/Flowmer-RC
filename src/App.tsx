@@ -1,17 +1,14 @@
 import { BrowserRouter } from "react-router-dom";
-
 import { AuthProvider } from "./context/AuthContext";
 import { GameProvider } from "./context/GameContext";
-import { AppRoutes } from "./routes/AppRoutes";
-import { Navbar } from "./components/Navbar";
+import { LayoutScreen } from "./layout/LayoutScreen";
 
 function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
         <GameProvider>
-          <Navbar />
-          <AppRoutes />
+          <LayoutScreen />
         </GameProvider>
       </AuthProvider>
     </BrowserRouter>
