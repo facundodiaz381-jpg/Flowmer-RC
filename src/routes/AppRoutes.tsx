@@ -1,10 +1,7 @@
-// Árbol de rutas de la aplicación — AppRoutes
-// Públicas: /, /login, /register, /game/:id, /about, *
-// Protegidas (usuario): /wishlist
-// Protegidas (admin): /admin
-
+// Árbol de rutas principal de FlowMer
 import { Routes, Route } from "react-router-dom";
 import { ProtectedRoute } from "./ProtectedRoute";
+import { AdminRoute } from "./AdminRoute";
 
 import { HomePage } from "../pages/Home";
 import { GameDetailPage } from "../pages/GameDetail";
@@ -13,7 +10,7 @@ import { RegisterPage } from "../pages/Register";
 import { WishlistPage } from "../pages/Wishlist";
 import { AboutPage } from "../pages/About";
 import { NotFoundPage } from "../pages/NotFound";
-import { Admin} from "../pages/Admin/admin";
+import { Admin } from "../pages/Admin/admin";
 
 export function AppRoutes() {
   return (
@@ -35,25 +32,17 @@ export function AppRoutes() {
         }
       />
 
-
-
-      {/* Ruta protegida: solo admin */}
-      {/* <Route
+      {/* Ruta protegida: solo rol administrador */}
+      <Route
         path="/admin"
         element={
           <AdminRoute>
-            <AdminDashboard />
+            <Admin />
           </AdminRoute>
         }
-      /> */}
-{/* Ruta de admin - temporalmente sin protección */}
-<Route
-  path="/admin"
-  element={<Admin/>}
-/>
+      />
 
-
-      {/* 404 */}
+      {/* 404 / No encontrado */}
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );

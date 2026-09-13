@@ -10,7 +10,7 @@ import { CheckoutModal } from "../../components/CheckoutModal";
 export function GameDetailPage() {
   const { id } = useParams<{ id: string }>();
   const [isBuyModalOpen, setIsBuyModalOpen] = useState(false);
-  const { games, reviews, votes, addVote, toggleWishlist, wishlist } =
+  const { games, reviews, votes, addVote, toggleWishlist, wishlist, addReview } =
     useGame();
   const { currentUser } = useAuth();
 
@@ -166,8 +166,10 @@ export function GameDetailPage() {
 
             {/* Reseñas de la comunidad con ReviewList */}
             <ReviewList
+              gameId={game.id}
               reviews={gameReviews}
-              isLoggedIn={Boolean(currentUser)}
+              currentUser={currentUser}
+              onAddReview={addReview}
             />
           </div>
 
