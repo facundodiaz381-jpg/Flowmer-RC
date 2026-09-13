@@ -10,6 +10,7 @@ export const seedGames: Game[] = [
     title: "Cyberpunk 2077",
     description:
       "Un RPG de mundo abierto y acción ambientado en Night City, una megalópolis obsesionada con el poder, la modificación corporal y el glamour.",
+       rec:true,
     price: 59.99,
     category: "RPG",
     genre: "Acción / Cyberpunk",
@@ -19,7 +20,7 @@ export const seedGames: Game[] = [
     developer: "CD Projekt Red",
     sound:"https://youtube.com/playlist?list=PLDisKgcnAC4SqX0mi1J5_gd7-hrIS5yJp&si=GpqqsjvthnxV_Y5F",
     mprice:15.00,
-    rec:"No Hay recomendacion todavia🥀",
+    mrec:"No Hay recomendacion todavia🥀",
     systemRequirements: {
       os: "Windows 10 (64-bit)",
       processor: "Intel Core i5-3570K / AMD FX-8310",
@@ -35,6 +36,7 @@ export const seedGames: Game[] = [
     title: "Counter-Strike 2",
     description:
       "El shooter táctico por excelencia. Enfrentamientos estratégicos de 5v5 donde la precisión, la economía del equipo y la utilidad definen cada ronda.",
+       rec:true,
     price: 0.0,
     category: "Shooter",
     genre: "FPS / Táctica",
@@ -44,7 +46,7 @@ export const seedGames: Game[] = [
     developer: "Valve",
     sound:"https://youtube.com/playlist?list=PLyaZgTGCYP7Tvnr2t15_wDTWwL_PIe-Y5&si=wFl_zjfkGhqkPghC",
     mprice:15.00,
-    rec:"No Hay recomendacion todavia🥀",
+    mrec:"No Hay recomendacion todavia🥀",
     systemRequirements: {
       os: "Windows 10 (64-bit)",
       processor: "CPU de 4 hilos físicos - Intel Core i5-750 o superior",
@@ -60,6 +62,7 @@ export const seedGames: Game[] = [
     title: "Red Dead Redemption 2",
     description:
       "Un action-RPG ambientado en el Lejano Oeste. Explora el mundo abierto a caballo, combate contra forajidos y desentraña los misterios del Oeste.",
+       rec:true,
     price: 59.99,
     category: "RPG",
     genre: "Acción / Western",
@@ -69,7 +72,7 @@ export const seedGames: Game[] = [
     developer: "Rockstar Games",
     sound:"https://youtube.com/playlist?list=PL7e-65HqcGc8Sr1kuyVZBl9XFn5KtgX7d&si=E9nZtHaiqY93zjnV",
     mprice:15.00,
-    rec:"No Hay recomendacion todavia🥀",
+    mrec:"No Hay recomendacion todavia🥀",
     systemRequirements: {
       os: "Windows 10/11 (64-bit)",
       processor: "Intel Core i7-6700K / AMD Ryzen 5 1500X",
@@ -85,6 +88,7 @@ export const seedGames: Game[] = [
     title: "Forza Horizon 5",
     description:
       "Conduce cientos de autos de ensueño a través de los vibrantes y cambiantes paisajes de un mundo abierto inspirado en México, con clima dinámico y eventos constantes.",
+       rec:true,
     price: 39.99,
     category: "Racing",
     genre: "Carreras / Mundo Abierto",
@@ -94,7 +98,7 @@ export const seedGames: Game[] = [
     developer: "Playground Games",
     sound:"https://youtube.com/playlist?list=PLse0hudmxeoN6KbCncwiAuFlQco_lBg15&si=Zks2RucVEdZBfgQK",
     mprice:15.00,
-    rec:"No Hay recomendacion todavia🥀",
+    mrec:"No Hay recomendacion todavia🥀",
     systemRequirements: {
       os: "Windows 10 (64-bit)",
       processor: "Intel Core i5-8400 / AMD Ryzen 5 1500X",
@@ -110,6 +114,7 @@ export const seedGames: Game[] = [
     title: "Hogwarts Legacy",
     description:
       "Una experiencia RPG ambientada en el universo de Harry Potter. Crea tu propio personaje, explora Hogwarts y sus alrededores, y desentraña los misterios del mundo mágico.",
+       rec:true,
     price: 39.99,
     category: "RPG",
     genre: "Acción / Fantasía",
@@ -119,7 +124,7 @@ export const seedGames: Game[] = [
     developer: "WB Games",
     sound:"https://youtube.com/playlist?list=PLBKadB95sF47AC0QgG8Eiuc8qaPtoJ6KA&si=IhYMcA_rU9FZydkN",
     mprice:15.00,
-    rec:"No Hay recomendacion todavia🥀",
+    mrec:"No Hay recomendacion todavia🥀",
     systemRequirements: {
       os: "Windows 10/11 (64-bit)",
       processor: "Intel Core i5-7500 / AMD Ryzen 3 1200",
@@ -135,6 +140,7 @@ export const seedGames: Game[] = [
     title: "Grand Theft Auto V",
     description:
       "Sumérgete en el soleado estado de San Andreas en esta historia criminal entrelazada de tres protagonistas, con un modo multijugador masivo y activo.",
+       rec:true,
     price: 29.99,
     category: "Action",
     genre: "Acción / Mundo Abierto",
@@ -144,7 +150,7 @@ export const seedGames: Game[] = [
     developer: "Rockstar Games",
     sound:"https://youtube.com/playlist?list=PLniAE5ZVzgJ72qmrW0BGgNzr2RspMx3Sg&si=6L_tRNkW5oO_L3C0",
     mprice:15.00,
-    rec:"No Hay recomendacion todavia🥀",
+    mrec:"No Hay recomendacion todavia🥀",
     systemRequirements: {
       os: "Windows 10/11 (64-bit)",
       processor: "Intel Core i5-3470 / AMD X8 FX-8350",
@@ -160,6 +166,7 @@ export const seedGames: Game[] = [
     title: "Deltarune",
     description:
       "¡Sumérgete en la historia paralela de UNDERTALE! Lucha o perdona en intensas batallas mientras exploras un mundo misterioso junto a un entrañable elenco de personajes nuevos y conocidos. Los capítulos 1 al 5 ya están disponibles, ¡y pronto habrá más en actualizaciones gratuitas!",
+       rec:true,
     price: 24.99,
     category: "RPG",
     genre: "Indie/Rol",
@@ -169,7 +176,7 @@ export const seedGames: Game[] = [
     developer: "Toby Fox",
     sound:"https://youtube.com/playlist?list=PLXnHL1clbv-M3rkgQfuzijKfwhLaybcnv&si=w3RKQulDASgVskc6",
     mprice:15.00,
-    rec:"THE WORLD REVOLVING, Attack of the Killer Queen, TV WORLD, It's TV Time!, Black Knife, NORTHERNLIGHT, Hammer of Justice,  Dark Place, Crumbling Tower, GUARDIAN, Garden of Hopes and Dreams, Petal Dance, Running Sky, Cutie Mew Mew Magic, Flower Man",
+    mrec:"THE WORLD REVOLVING, Attack of the Killer Queen, TV WORLD, It's TV Time!, Black Knife, NORTHERNLIGHT, Hammer of Justice,  Dark Place, Crumbling Tower, GUARDIAN, Garden of Hopes and Dreams, Petal Dance, Running Sky, Cutie Mew Mew Magic, Flower Man",
     systemRequirements: {
       os: "Windows 10",
       processor: "Intel i2",
@@ -185,6 +192,7 @@ export const seedGames: Game[] = [
     title: "PHIGHTING!",
     description:
       "Forma equipo con otros cuatro jugadores para aniquilar y conquistar el contra tus enemigos con 15 personajes jugables y más de 25 mapas para luchar. Disfruta de las PHIGHT contra otros jugadores, vence oleadas de zombis en Crossroads Must Fall o simplemente pasa el rato en Crossroads, ¡pero siempre prepárate para PHIGHT!.",
+       rec:true,
     price: 0.0,
     category: "Action",
     genre: "Shotter/Peleas",
@@ -194,7 +202,7 @@ export const seedGames: Game[] = [
     developer: "Boggio",
     sound:"https://youtube.com/playlist?list=PLyqedVKgyTiqnMMjvp5YXbYT8GlN-DDL9&si=4F1uQbQCjz04p_Wr",
     mprice:0.0,
-    rec:"THE FLIPSIDE, DEVIL'S PANDEMONIUM, SENSORY OVERLOAD, SOLAR ECLIPSE, CAPPUCCINO CRESCENDO, BELOVED MEMORIES, THE MOST WANTED, CALL OF THE HEIGHTS, WATCH YOUR ALTITUDE, EDGE OF INPHINITY y SUM PPL",
+    mrec:"THE FLIPSIDE, DEVIL'S PANDEMONIUM, SENSORY OVERLOAD, SOLAR ECLIPSE, CAPPUCCINO CRESCENDO, BELOVED MEMORIES, THE MOST WANTED, CALL OF THE HEIGHTS, WATCH YOUR ALTITUDE, EDGE OF INPHINITY y SUM PPL",
     systemRequirements: {
       os: "Windows 10",
       processor: "Intel i3",
@@ -210,6 +218,7 @@ export const seedGames: Game[] = [
     title: "Block Tales",
     description:
       "Juego de rol multijugador por turnos inspirado en Paper Mario 64 y Earthbound. Disponible para PC, dispositivos móviles/tabletas y consolas.",
+       rec:true,
     price: 0.0,
     category: "RPG",
     genre: "Pelea por turnos/Historia",
@@ -219,7 +228,7 @@ export const seedGames: Game[] = [
     developer: "Spaceman Moonbase",
     sound:"https://youtube.com/playlist?list=PLqRneiWhMmp_mn52YgtSOJgUCSJGBOb_j&si=RvJNLr99j1-eatt8",
     mprice:0.0,
-    rec:"Fear, Hatred, Temple Guardian, Capitan Trotter, The Ancients, Splintered Skies, Trinity Council, Seventh Sanctum, Frostmaw y Debriefing",
+    mrec:"Fear, Hatred, Temple Guardian, Capitan Trotter, The Ancients, Splintered Skies, Trinity Council, Seventh Sanctum, Frostmaw y Debriefing",
     systemRequirements: {
       os: "Windows 10",
       processor: "Intel i3",
@@ -235,6 +244,7 @@ export const seedGames: Game[] = [
     title: "Hollow Knight: Silksong",
     description:
       "¡Descubre un vasto reino embrujado en Hollow Knight: Silksong! Explora, lucha y sobrevive mientras asciendes a la cima de un vasto reino gobernado por la seda y el canto.",
+       rec:true,
     price: 24.99,
     category: "Metroidvania",
     genre: "Indie/Peleas",
@@ -244,7 +254,7 @@ export const seedGames: Game[] = [
     developer: "Team Cherry",
     sound:"https://youtube.com/playlist?list=PLbNT78Q7M14yC4iIN4RaQqGa6q6zY6bqc&si=D70cso_pwUrpfiQo",
     mprice:18.00,
-    rec:"Mount Fay y Lost Lace",
+    mrec:"Mount Fay y Lost Lace",
     systemRequirements: {
       os: "Windows 10",
       processor: "Intel i3",
@@ -260,6 +270,7 @@ export const seedGames: Game[] = [
     title: "Don't Starve",
     description:
       "Don't Starve es un juego de supervivencia en la naturaleza sin concesiones, repleto de ciencia y magia. Adéntrate en un mundo extraño e inexplorado, lleno de criaturas insólitas, peligros y sorpresas. Reúne recursos para fabricar objetos y estructuras que se adapten a tu estilo de supervivencia.",
+      rec:true,
     price: 24.99,
     category: "Supervivencia",
     genre: "Mundo Abierto/Aventura",
@@ -269,7 +280,7 @@ export const seedGames: Game[] = [
     developer: "Klei Entertainment",
     sound:"https://youtube.com/playlist?list=PL04_cfk5iWv5utQUFXIo0Xkkvc0u6gzz2&si=MBJWUAL936yYfCse",
     mprice:11.00,
-    rec:"Danger y Ragtime",
+    mrec:"Danger y Ragtime",
     systemRequirements: {
       os: " Windows XP / Vista / Windows 7 / Windows 8",
       processor: "1.7 GHz o superior",
@@ -285,6 +296,7 @@ export const seedGames: Game[] = [
     title: "Minecraft",
     description:
       "Crea todo lo que puedas imaginar, descubre misterios espeluznantes y sobrevive a la noche en el juego de aventura tipo sandbox definitivo. En Minecraft, cada partida es diferente y te esperan aventuras inolvidables a la vuelta de la esquina. Explora y crea tu camino a un mundo infinito al que le puedes dar forma bloque a bloque.",
+       rec:true,
     price: 24.99,
     category: "Supervivencia",
     genre: "Mundo Abierto/Aventura",
@@ -294,7 +306,7 @@ export const seedGames: Game[] = [
     developer: "Mojang",
     sound:"https://youtube.com/playlist?list=PLefKpFQ8Pvy5aCLAGHD8Zmzsdljos-t2l&si=YU0W64JNjDcDpr-u",
     mprice:11.00,
-    rec:"Far y Aerie",
+    mrec:"Far y Aerie",
     systemRequirements: {
       os: " Windows XP / Vista / Windows 7 / Windows 8",
       processor: "intel I5",
@@ -310,6 +322,7 @@ export const seedGames: Game[] = [
     title: "Geometry Dash",
     description:
       "¡Salta y vuela a través del peligro en este juego de plataformas de acción basado en el ritmo!",
+       rec:true,
     price: 2.99,
     category: "Plataformas",
     genre: "Ritmo/Editor de niveles",
@@ -319,7 +332,7 @@ export const seedGames: Game[] = [
     developer: "RobTop Games",
     sound:"https://youtube.com/playlist?list=PLnaJlq-zKc0WUXhwhSowwJdpe1fZumJzd&si=y55okGYdb7Ud9zcQ",
     mprice:1.00,
-    rec:"Waterflame",
+    mrec:"Waterflame",
     systemRequirements: {
       os: "Windows XP",
       processor: "intel I2",
