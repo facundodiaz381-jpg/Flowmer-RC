@@ -18,6 +18,7 @@ type FormData = {
   developer: string;
   sound: string;
   mprice: string;
+  mrec: string;
   os: string;
   processor: string;
   memory: string;
@@ -36,6 +37,7 @@ const emptyForm: FormData = {
   developer: "",
   sound: "",
   mprice: "",
+  mrec: "",
   os: "",
   processor: "",
   memory: "",
@@ -66,7 +68,7 @@ export function Admin() {
     const gameData = {
       title: form.title,
       description: form.description,
-      rec:false,
+      rec: false,
       price: Number(form.price) || 0,
       category: form.category,
       genre: form.genre,
@@ -75,6 +77,7 @@ export function Admin() {
       developer: form.developer,
       sound: form.sound,
       mprice: Number(form.mprice) || 0,
+      mrec: form.mrec || "Recomendado por la comunidad",
       systemRequirements: {
         os: form.os,
         processor: form.processor,
@@ -110,6 +113,7 @@ export function Admin() {
       developer: game.developer,
       sound: game.sound,
       mprice: String(game.mprice),
+      mrec: game.mrec || "",
       os: game.systemRequirements.os,
       processor: game.systemRequirements.processor,
       memory: game.systemRequirements.memory,

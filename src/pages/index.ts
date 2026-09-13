@@ -8,4 +8,4 @@ export { RegisterPage } from "./Register";
 export { WishlistPage } from "./Wishlist";
 export { AboutPage } from "./About";
 export { NotFoundPage } from "./NotFound";
-export { AdminDashboard } from "./Admin";
+export { Admin, AdminDashboard } from "./Admin";
