@@ -10,7 +10,7 @@ export function Sound({ game }: GameCardProps) {
   href={game.sound}
   target="_blank"
   rel="noopener noreferrer"
-  className="group bg-[#0e0e18] rounded-xl overflow-hidden border border-white/5 hover:border-violet-500/30 transition-all duration-300 hover:shadow-xl hover:shadow-violet-500/5 hover:-translate-y-1 cursor-pointer flex flex-col w-lg"
+  className="group bg-[#0e0e18] rounded-xl overflow-hidden border border-white/5 hover:border-violet-500/30 transition-all duration-300 hover:shadow-xl hover:shadow-violet-500/5 hover:-translate-y-1 cursor-pointer flex flex-col sm-w-full w-mg"
 >
   {/* Portada */}
   <div className="relative w-full overflow-hidden">
@@ -48,7 +48,7 @@ export function Sound({ game }: GameCardProps) {
         Escucha La Asombrosa Banda Sonora de {game.developer}.
       </p>
       <div className="flex justify-start bg-violet-600 backdrop-blur-sm border border-white/10 px-3 py-1 rounded-3xs rounded-xl">
-      <p className="font-sans">FlowMer te Dice Que Escuches: {game.rec}.</p>
+      <p className="font-sans">FlowMer te Dice Que Escuches: {game.mrec}.</p>
       </div>
     </div>
   </div>
