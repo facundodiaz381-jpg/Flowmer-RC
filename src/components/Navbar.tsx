@@ -4,7 +4,6 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { useGame } from "../context/GameContext";
 import { SearchBar } from "./SearchBar";
-
 export function Navbar() {
   // Contextos globales para autenticación y catálogo
   const { currentUser, logout } = useAuth();
@@ -46,16 +45,15 @@ export function Navbar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a12]/90 backdrop-blur-xl border-b border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between gap-4">
-        
+
         {/* 1. LOGO PRINCIPAL */}
-        <Link to="/" className="flex items-center gap-1 shrink-0 group">
-          <span className="text-xl font-black text-white tracking-tight group-hover:text-violet-400 transition-colors duration-300">
-            Flow
-          </span>
-          <span className="text-xl font-black bg-gradient-to-r from-violet-500 to-fuchsia-500 bg-clip-text text-transparent">
-            Mer
-          </span>
-        </Link>
+          <Link to="/" className="flex items-center gap-1 shrink-0 group">
+            <img 
+              src="./public/Flowmer.png" 
+              alt="FlowMer Logo" 
+              className="h-18 w-auto object-contain transition-transform duration-300 group-hover:scale-105" 
+            />
+          </Link>
 
         {/* 2. NAVEGACIÓN DESKTOP (visible a partir de pantallas md) */}
         <nav className="hidden md:flex items-center gap-1">
