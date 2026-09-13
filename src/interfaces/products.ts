@@ -21,8 +21,9 @@ export interface Game {
   image: string;         // URL de la imagen de portada
   trailerUrl?: string;   // URL de embed de YouTube (opcional)
   developer: string;
-  sound: string;
-  mprice:number,
+  sound: string;        // link de la playlist
+  mprice: number;       // precio de la playlist
+  mrec: string;         // musica de la playlists que recomendamos
   systemRequirements: SystemRequirements;
   upvotes: number;
   downvotes: number;

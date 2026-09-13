@@ -1,9 +1,11 @@
-// Layout principal de la aplicación — LayoutScreen
+// Layout principal — renderiza Navbar y Footer condicionalmente según la ruta.
 import { useLocation } from "react-router-dom";
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { AppRoutes } from "../routes/AppRoutes";
 
+// Rutas donde se oculta el layout (Login, Registro, Admin son pantalla completa).
+// startsWith cubre sub-rutas futuras como /admin/settings.
 const HIDDEN_LAYOUT_ROUTES = ["/login", "/register", "/admin"];
 
 export function LayoutScreen() {

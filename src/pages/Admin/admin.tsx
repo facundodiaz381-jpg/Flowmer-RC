@@ -8,40 +8,42 @@ import { useGame } from "../../context/GameContext";
 import { AdminForm } from "../../components/admin/AdminForm";
 import { AdminGameList } from "../../components/admin/AdminGameList";
 
- type FormData = {
-   description: string;
-   price: string;
-   category: string;
-   genre: string;
-   image: string;
-   trailerUrl: string;
-   developer: string;
-   sound: string;
-   mprice: string;
-   os: string;
-   processor: string;
-   memory: string;
-   graphics: string;
-   storage: string;
-   title: string;
+type FormData = {
+  title: string;
+  description: string;
+  price: string;
+  category: string;
+  genre: string;
+  image: string;
+  trailerUrl: string;
+  developer: string;
+  sound: string;
+  mprice: string;
+  mrec: string;
+  os: string;
+  processor: string;
+  memory: string;
+  graphics: string;
+  storage: string;
 };
 
- const emptyForm: FormData = {
-        description: "",
-        price: "",
-        category: "",
-        genre: "",
-        image: "",
-        trailerUrl: "",
-        developer: "",
-        sound: "",
-        mprice: "",
-        os: "",
-        processor: "",
-        memory: "",
-        graphics: "",
-        storage: "",
-        title: "",
+const emptyForm: FormData = {
+  title: "",
+  description: "",
+  price: "",
+  category: "",
+  genre: "",
+  image: "",
+  trailerUrl: "",
+  developer: "",
+  sound: "",
+  mprice: "",
+  mrec: "",
+  os: "",
+  processor: "",
+  memory: "",
+  graphics: "",
+  storage: "",
 };
 
 export function Admin() {
@@ -66,23 +68,24 @@ export function Admin() {
     }
 
     const gameData = {
-            title: form.title,
-            description: form.description,
-            rec: false,
-            price: Number(form.price) || 0,
-            category: form.category,
-            genre: form.genre,
-            image: form.image,
-            trailerUrl: form.trailerUrl || undefined,
-            developer: form.developer,
-            sound: form.sound,
-            mprice: Number(form.mprice) || 0,
-            systemRequirements: {
-              os: form.os,
-              processor: form.processor,
-              memory: form.memory,
-              graphics: form.graphics,
-              storage: form.storage,
+      title: form.title,
+      description: form.description,
+      rec: false,
+      price: Number(form.price) || 0,
+      category: form.category,
+      genre: form.genre,
+      image: form.image,
+      trailerUrl: form.trailerUrl || undefined,
+      developer: form.developer,
+      sound: form.sound,
+      mprice: Number(form.mprice) || 0,
+      mrec: form.mrec || "Recomendado por la comunidad",
+      systemRequirements: {
+        os: form.os,
+        processor: form.processor,
+        memory: form.memory,
+        graphics: form.graphics,
+        storage: form.storage,
       },
     };
 
@@ -103,22 +106,23 @@ export function Admin() {
     setEditing(game);
 
     setForm({
-            title: game.title,
-            description: game.description,
-            price: String(game.price),
-            category: game.category,
-            genre: game.genre,
-            image: game.image,
-            trailerUrl: game.trailerUrl ?? "",
-            developer: game.developer,
-            sound: game.sound,
-            mprice: String(game.mprice),
-            os: game.systemRequirements.os,
-            processor: game.systemRequirements.processor,
-            memory: game.systemRequirements.memory,
-            graphics: game.systemRequirements.graphics,
-            storage: game.systemRequirements.storage,
-          });
+      title: game.title,
+      description: game.description,
+      price: String(game.price),
+      category: game.category,
+      genre: game.genre,
+      image: game.image,
+      trailerUrl: game.trailerUrl ?? "",
+      developer: game.developer,
+      sound: game.sound,
+      mprice: String(game.mprice),
+      mrec: game.mrec || "",
+      os: game.systemRequirements.os,
+      processor: game.systemRequirements.processor,
+      memory: game.systemRequirements.memory,
+      graphics: game.systemRequirements.graphics,
+      storage: game.systemRequirements.storage,
+    });
   };
 
   const cancelEdit = () => {
