@@ -197,7 +197,7 @@ export const seedGames: Game[] = [
     category: "Action",
     genre: "Shotter/Peleas",
     image:
-      "https://cdn.discordapp.com/attachments/1003919647151771658/1538970748654325801/notext.png?ex=6aa59333&is=6aa441b3&hm=a5b001d844b3abb7955fb19bb622f805d24e032aa540cb7723ac3b67c179354c",
+      "https://static.wikitide.net/phightingwiki/c/c8/Rocket_Banner.png?20260531221404",
     trailerUrl: "https://www.youtube.com/embed/Z3WLIpLDFtE?si=u_3ra7-By0e6QPYj",
     developer: "Boggio",
     sound:"https://youtube.com/playlist?list=PLyqedVKgyTiqnMMjvp5YXbYT8GlN-DDL9&si=4F1uQbQCjz04p_Wr",
