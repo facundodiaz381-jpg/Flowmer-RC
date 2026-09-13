@@ -1,6 +1,7 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import type { Game } from "../interfaces";
 import { useWishlist } from "../hooks";
+import { useAuth } from "../context/AuthContext";
 
 type GameCardProps = {
   game: Game;
@@ -8,8 +9,23 @@ type GameCardProps = {
 
 export function GameCard({ game }: GameCardProps) {
   const { isInWishlist, toggleWishlist } = useWishlist();
+  const { currentUser } = useAuth();
+  const navigate = useNavigate();
+
   const gameIdStr = String(game.id);
   const liked = isInWishlist(gameIdStr);
+
+  const handleWishlistClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (!currentUser) {
+      navigate("/login");
+      return;
+    }
+
+    toggleWishlist(gameIdStr);
+  };
 
   return (
     <Link
@@ -23,15 +39,11 @@ export function GameCard({ game }: GameCardProps) {
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0e0e18] via-transparent to-transparent opacity-60" />
-        
+
         {/* Botón de wishlist */}
         <button
           type="button"
-          onClick={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            toggleWishlist(gameIdStr);
-          }}
+          onClick={handleWishlistClick}
           className="absolute top-3 left-3 bg-black/60 backdrop-blur-sm border border-white/10 p-2 rounded-lg hover:bg-black/80 transition-colors z-10"
           title={liked ? "Eliminar de la lista" : "Añadir a la lista"}
         >
