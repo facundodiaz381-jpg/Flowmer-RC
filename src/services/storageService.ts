@@ -91,7 +91,14 @@ export function clearCurrentUser(): void {
 // ─── Juegos ─────────────────────────────────────────────────────────────────
 
 export function getGames(): Game[] {
-  return JSON.parse(localStorage.getItem(KEYS.games) ?? "[]") as Game[];
+  const raw = localStorage.getItem(KEYS.games);
+
+  if (!raw) {
+    localStorage.setItem(KEYS.games, JSON.stringify(seedGames));
+    return seedGames;
+  }
+
+  return JSON.parse(raw) as Game[];
 }
 
 export function saveGames(games: Game[]): void {
