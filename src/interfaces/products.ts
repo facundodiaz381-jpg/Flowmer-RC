@@ -14,7 +14,7 @@ export interface Game {
   id: number;
   title: string;
   description: string;
-  rec: string;         // Recomendación del juego
+  rec: boolean;         // Recomendación del juego
   price: number;         // En USD. 0 = GRATIS
   category: string;      // Ej: "RPG", "Shooter", "Racing"
   genre: string;         // Ej: "Acción / Cyberpunk"
