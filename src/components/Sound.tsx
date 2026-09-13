@@ -48,7 +48,7 @@ export function Sound({ game }: GameCardProps) {
         Escucha La Asombrosa Banda Sonora de {game.developer}.
       </p>
       <div className="flex justify-start bg-violet-600 backdrop-blur-sm border border-white/10 px-3 py-1 rounded-3xs rounded-xl">
-      <p className="font-sans">FlowMer Te Recomienda: {game.rec}</p>
+      <p className="font-sans">FlowMer te Dice Que Escuches: {game.rec}.</p>
       </div>
     </div>
   </div>

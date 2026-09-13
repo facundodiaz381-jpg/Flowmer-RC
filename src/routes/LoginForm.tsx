@@ -1,11 +1,13 @@
 import { useRef } from "react";
 import { useAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
   const correo = useRef<HTMLInputElement>(null);
   const contraseña = useRef<HTMLInputElement>(null);
 
   const { login } = useAuth();
+ const navegar = useNavigate();
 
   const handleLogin = () => {
     const correoValor = correo.current?.value;
@@ -19,7 +21,8 @@ const LoginForm = () => {
     const success = login(correoValor, contraseñaValor);
 
     if (success) {
-      window.location.reload();
+      alert("Inicio de Sesion Correcto");
+      navegar('/')
     } else {
       alert("El Correo Electronico o La Contraseña Son Incorrectos");
     }
