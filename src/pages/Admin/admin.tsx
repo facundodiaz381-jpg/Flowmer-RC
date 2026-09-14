@@ -153,6 +153,7 @@ export function Admin() {
           onSave={saveGame}
           onCancel={cancelEdit}
         />
+        
 
         <AdminGameList
           games={games}
