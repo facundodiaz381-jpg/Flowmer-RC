@@ -7,7 +7,7 @@ import type { Game } from "../../interfaces";
 import { useGame } from "../../context/GameContext";
 import { AdminForm } from "../../components/admin/AdminForm";
 import { AdminGameList } from "../../components/admin/AdminGameList";
-
+import { Navbar } from "../../components/Navbar";
 type FormData = {
   title: string;
   description: string;
@@ -130,17 +130,17 @@ export function Admin() {
     setForm(emptyForm);
   };
 
-  return (
-    <main className="min-h-screen overflow-x-hidden bg-[#0B0B10] p-4 text-white sm:p-6">
-      <div className="mx-auto mb-6 flex max-w-5xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <h1 className="text-2xl font-bold text-[#7B3FA6] sm:text-3xl">
+ return (
+  <>
+    <Navbar />
+
+    <main className="min-h-screen bg-[#0B0B10] pt-20 p-6 text-white">
+      <div className="mx-auto mb-6 flex max-w-5xl items-center justify-between">
+        <h1 className="text-3xl font-bold text-[#7B3FA6]">
           Panel de Administración
         </h1>
 
-        <Link
-          to="/"
-          className="w-fit text-sm text-violet-400 hover:underline"
-        >
+        <Link to="/" className="text-sm text-violet-400 hover:underline">
           ← Volver a la Tienda
         </Link>
       </div>
@@ -161,5 +161,5 @@ export function Admin() {
         />
       </div>
     </main>
-  );
-};
+  </>
+);}
