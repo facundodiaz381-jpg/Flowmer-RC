@@ -1,46 +1,57 @@
-// Placeholder de AdminDashboard listo para implementar el CRUD
-import { useEffect, useState } from "react";
+// Panel de administración
+
+import { useState } from "react";
 import type { ChangeEvent } from "react";
 import { Link } from "react-router-dom";
-
-import type { Game } from "../../types/game";
+import type { Game } from "../../interfaces";
+import { useGame } from "../../context/GameContext";
 import { AdminForm } from "../../components/admin/AdminForm";
 import { AdminGameList } from "../../components/admin/AdminGameList";
-
+import { Navbar } from "../../components/Navbar";
 type FormData = {
-  name: string;
+  title: string;
+  description: string;
   price: string;
   category: string;
+  genre: string;
   image: string;
-  description: string;
+  trailerUrl: string;
   developer: string;
-  requirements: string;
+  sound: string;
+  mprice: string;
+  mrec: string;
+  os: string;
+  processor: string;
+  memory: string;
+  graphics: string;
+  storage: string;
 };
 
 const emptyForm: FormData = {
-  name: "",
+  title: "",
+  description: "",
   price: "",
   category: "",
+  genre: "",
   image: "",
-  description: "",
+  trailerUrl: "",
   developer: "",
-  requirements: "",
+  sound: "",
+  mprice: "",
+  mrec: "",
+  os: "",
+  processor: "",
+  memory: "",
+  graphics: "",
+  storage: "",
 };
 
 export function Admin() {
-  const [games, setGames] = useState<Game[]>([]);
+  
   const [editing, setEditing] = useState<Game | null>(null);
   const [form, setForm] = useState<FormData>(emptyForm);
-
-  useEffect(() => {
-    const saved = localStorage.getItem("games");
-    if (saved) setGames(JSON.parse(saved));
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("games", JSON.stringify(games));
-  }, [games]);
-
+  
+  const { games, addGame, updateGame, deleteGame } = useGame();
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -51,21 +62,40 @@ export function Admin() {
   };
 
   const saveGame = () => {
-    if (!form.name || !form.category || !form.description) {
+    if (!form.title || !form.category || !form.description) {
       alert("Completá los campos obligatorios");
       return;
     }
 
-    const game: Game = {
-      id: editing ? editing.id : Date.now(),
-      ...form,
-      price: Number(form.price),
+    const gameData = {
+      title: form.title,
+      description: form.description,
+      rec: false,
+      price: Number(form.price) || 0,
+      category: form.category,
+      genre: form.genre,
+      image: form.image,
+      trailerUrl: form.trailerUrl || undefined,
+      developer: form.developer,
+      sound: form.sound,
+      mprice: Number(form.mprice) || 0,
+      mrec: form.mrec || "Recomendado por la comunidad",
+      systemRequirements: {
+        os: form.os,
+        processor: form.processor,
+        memory: form.memory,
+        graphics: form.graphics,
+        storage: form.storage,
+      },
     };
 
     if (editing) {
-      setGames(games.map((g) => (g.id === game.id ? game : g)));
+      updateGame({
+        ...editing,
+        ...gameData,
+      });
     } else {
-      setGames([...games, game]);
+      addGame(gameData);
     }
 
     setEditing(null);
@@ -74,43 +104,56 @@ export function Admin() {
 
   const editGame = (game: Game) => {
     setEditing(game);
+
     setForm({
-      ...game,
+      title: game.title,
+      description: game.description,
       price: String(game.price),
+      category: game.category,
+      genre: game.genre,
+      image: game.image,
+      trailerUrl: game.trailerUrl ?? "",
+      developer: game.developer,
+      sound: game.sound,
+      mprice: String(game.mprice),
+      mrec: game.mrec || "",
+      os: game.systemRequirements.os,
+      processor: game.systemRequirements.processor,
+      memory: game.systemRequirements.memory,
+      graphics: game.systemRequirements.graphics,
+      storage: game.systemRequirements.storage,
     });
   };
 
-  const deleteGame = (id: number) => {
-    if (confirm("¿Querés eliminar este juego?")) {
-      setGames(games.filter((game) => game.id !== id));
-    }
+  const cancelEdit = () => {
+    setEditing(null);
+    setForm(emptyForm);
   };
 
-  return (
-    <main className="min-h-screen bg-[#0B0B10] p-6 text-white">
-      <div className="max-w-4xl mx-auto mb-6 flex justify-between items-center">
+ return (
+  <>
+    <Navbar />
+
+    <main className="min-h-screen bg-[#0B0B10] pt-20 p-6 text-white">
+      <div className="mx-auto mb-6 flex max-w-5xl items-center justify-between">
         <h1 className="text-3xl font-bold text-[#7B3FA6]">
           Panel de Administración
         </h1>
-        <Link
-          to="/"
-          className="text-sm text-violet-400 hover:underline"
-        >
+
+        <Link to="/" className="text-sm text-violet-400 hover:underline">
           ← Volver a la Tienda
         </Link>
       </div>
 
-      <div className="max-w-4xl mx-auto space-y-6">
+      <div className="mx-auto max-w-5xl space-y-6">
         <AdminForm
           form={form}
           editing={editing !== null}
           onChange={handleChange}
           onSave={saveGame}
-          onCancel={() => {
-            setEditing(null);
-            setForm(emptyForm);
-          }}
+          onCancel={cancelEdit}
         />
+        
 
         <AdminGameList
           games={games}
@@ -119,5 +162,5 @@ export function Admin() {
         />
       </div>
     </main>
-  );
-}
+  </>
+);}

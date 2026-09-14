@@ -1,12 +1,16 @@
-// Página de detalle de un juego — Diseño Premium estilo Steam con tráiler de YouTube
+// GameDetailPage — página de detalle estilo Steam con tráiler, compra, wishlist y votos.
+import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useGame } from "../../context/GameContext";
 import { useAuth } from "../../context/AuthContext";
 import { ReviewList } from "../../components/ReviewList";
+import Sound from "../../components/Sound";
+import { CheckoutModal } from "../../components/CheckoutModal";
 
 export function GameDetailPage() {
   const { id } = useParams<{ id: string }>();
-  const { games, reviews, votes, addVote, toggleWishlist, wishlist } =
+  const [isBuyModalOpen, setIsBuyModalOpen] = useState(false);
+  const { games, reviews, votes, addVote, toggleWishlist, wishlist, addReview } =
     useGame();
   const { currentUser } = useAuth();
 
@@ -29,12 +33,26 @@ export function GameDetailPage() {
   const userVote = currentUser
     ? votes.find((v) => v.userId === currentUser.id && v.gameId === game.id)
     : undefined;
-  const inWishlist = currentUser
-    ? wishlist.some((w) => w.userId === currentUser.id && w.gameId === game.id)
-    : false;
-  const totalVotes = game.upvotes + game.downvotes;
+
+  const currentUserId = currentUser ? currentUser.id : 0;
+  const inWishlist = wishlist.some(
+    (w) => w.userId === currentUserId && w.gameId === game.id,
+  );
+
+  const upvotes = typeof game.upvotes === "number" ? game.upvotes : 0;
+  const downvotes = typeof game.downvotes === "number" ? game.downvotes : 0;
+  const totalVotes = upvotes + downvotes;
   const positivePercent =
-    totalVotes > 0 ? Math.round((game.upvotes / totalVotes) * 100) : 0;
+    totalVotes > 0 ? Math.round((upvotes / totalVotes) * 100) : 0;
+
+  const price = typeof game.price === "number" ? game.price : 0;
+  const systemRequirements = game.systemRequirements || {
+    os: "Windows 10 / 11",
+    processor: "Intel / AMD",
+    memory: "8 GB RAM",
+    graphics: "NVIDIA / AMD",
+    storage: "Espacio disponible requerido",
+  };
 
   function handleVote(type: "up" | "down"): void {
     if (!currentUser) return;
@@ -81,14 +99,14 @@ export function GameDetailPage() {
           <p className="text-gray-400 text-sm mt-1">
             Desarrollado por{" "}
             <span className="text-gray-200 font-semibold">
-              {game.developer}
+              {game.developer || "Desconocido"}
             </span>
           </p>
         </div>
 
         {/* Grilla Principal (12 columnas) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          {/* Columna Izquierda: Tráiler / Video + Descripción + Reseñas (7 u 8 columnas) */}
+          {/* Columna Izquierda: Tráiler / Video + Descripción + Requisitos + Reseñas */}
           <div className="lg:col-span-7 flex flex-col gap-6">
             {/* Tráiler de Video en HD estilo Steam / YouTube */}
             {game.trailerUrl ? (
@@ -121,13 +139,16 @@ export function GameDetailPage() {
               </p>
             </div>
 
+            {/* Soundtrack */}
+            <Sound game={game} />
+
             {/* Requisitos del sistema */}
             <div className="bg-[#0e0e18] border border-white/5 rounded-2xl p-6 shadow-lg">
               <h2 className="text-xs font-bold uppercase tracking-widest text-violet-400 mb-4">
                 Requisitos del sistema
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {Object.entries(game.systemRequirements).map(([key, value]) => (
+                {Object.entries(systemRequirements).map(([key, value]) => (
                   <div
                     key={key}
                     className="bg-white/5 border border-white/5 rounded-xl p-3.5"
@@ -136,7 +157,7 @@ export function GameDetailPage() {
                       {key}
                     </span>
                     <span className="text-gray-200 text-xs md:text-sm font-medium">
-                      {value}
+                      {String(value)}
                     </span>
                   </div>
                 ))}
@@ -145,8 +166,10 @@ export function GameDetailPage() {
 
             {/* Reseñas de la comunidad con ReviewList */}
             <ReviewList
+              gameId={game.id}
               reviews={gameReviews}
-              isLoggedIn={Boolean(currentUser)}
+              currentUser={currentUser}
+              onAddReview={addReview}
             />
           </div>
 
@@ -167,23 +190,19 @@ export function GameDetailPage() {
                     Precio oficial
                   </span>
                   <span className="text-3xl font-black text-white">
-                    {game.price === 0 ? (
+                    {price === 0 ? (
                       <span className="text-emerald-400">GRATIS</span>
                     ) : (
-                      `$${game.price.toFixed(2)}`
+                      `$${price.toFixed(2)}`
                     )}
                   </span>
                 </div>
 
-                {/* Botón Comprar / Wishlist */}
+                {/* Botón Comprar / Favoritos */}
                 <div className="space-y-2">
                   <button
-                    onClick={() =>
-                      alert(
-                        `¡Gracias por tu interés en ${game.title}! Pronto se habilitará la pasarela de pago.`,
-                      )
-                    }
-                    className="w-full bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 text-white font-bold py-3 rounded-xl shadow-lg shadow-violet-600/30 transition-all duration-300 flex items-center justify-center gap-2"
+                    onClick={() => setIsBuyModalOpen(true)}
+                    className="w-full bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 text-white font-bold py-3 rounded-xl shadow-lg shadow-violet-600/30 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer active:scale-[0.98]"
                   >
                     <svg
                       className="w-5 h-5"
@@ -201,27 +220,18 @@ export function GameDetailPage() {
                     Comprar ahora
                   </button>
 
-                  {currentUser ? (
-                    <button
-                      onClick={() => toggleWishlist(currentUser.id, game.id)}
-                      className={`w-full py-2.5 rounded-xl border text-sm font-semibold transition-all duration-200 flex items-center justify-center gap-2 ${
-                        inWishlist
-                          ? "bg-violet-600/20 border-violet-500/50 text-violet-300 hover:bg-violet-600/30"
-                          : "bg-white/5 border-white/10 text-gray-300 hover:border-violet-500/50 hover:bg-white/10"
-                      }`}
-                    >
-                      {inWishlist
-                        ? "♥ Guardado en wishlist"
-                        : "♡ Agregar a wishlist"}
-                    </button>
-                  ) : (
-                    <Link
-                      to="/login"
-                      className="block text-center w-full py-2.5 rounded-xl border border-white/10 bg-white/5 text-gray-300 hover:text-white text-sm font-semibold transition-colors"
-                    >
-                      Iniciá sesión para guardar en wishlist
-                    </Link>
-                  )}
+                  <button
+                    onClick={() => toggleWishlist(currentUserId, game.id)}
+                    className={`w-full py-2.5 rounded-xl border text-sm font-semibold transition-all duration-200 flex items-center justify-center gap-2 ${
+                      inWishlist
+                        ? "bg-violet-600/20 border-violet-500/50 text-fuchsia-300 hover:bg-violet-600/30"
+                        : "bg-white/5 border-white/10 text-gray-300 hover:border-violet-500/50 hover:bg-white/10"
+                    }`}
+                  >
+                    {inWishlist
+                      ? "♥ Guardado en favoritos"
+                      : "♡ Agregar a favoritos"}
+                  </button>
                 </div>
               </div>
             </div>
@@ -237,43 +247,64 @@ export function GameDetailPage() {
                 </span>
               </div>
 
-              {/* Barra de estado visual */}
-              <div className="w-full bg-white/5 rounded-full h-2 overflow-hidden">
+              {/* Barra de progreso de valoración */}
+              <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden">
                 <div
-                  className="h-full bg-gradient-to-r from-green-500 to-emerald-400 rounded-full transition-all duration-500"
+                  className="h-full bg-gradient-to-r from-green-500 to-emerald-400 transition-all duration-500"
                   style={{ width: `${positivePercent}%` }}
                 />
               </div>
 
-              {/* Botones de Voto (+ / -) */}
-              <div className="flex items-center gap-3 pt-2">
+              {/* Botones de Voto (Upvote / Downvote) */}
+              <div className="grid grid-cols-2 gap-3 pt-2">
                 <button
                   onClick={() => handleVote("up")}
                   disabled={!currentUser}
-                  className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl border text-sm font-bold transition-all duration-200 ${
+                  className={`py-2 px-3 rounded-xl border text-xs font-bold transition-all duration-200 flex items-center justify-center gap-2 ${
                     userVote?.type === "up"
                       ? "bg-green-600/20 border-green-500/50 text-green-300"
                       : "bg-white/5 border-white/10 text-gray-400 hover:border-green-500/50 hover:text-green-300"
                   } disabled:opacity-40 disabled:cursor-not-allowed`}
                 >
-                  👍 <span>{game.upvotes.toLocaleString()}</span>
+                  👍 <span>{upvotes.toLocaleString()}</span>
                 </button>
                 <button
                   onClick={() => handleVote("down")}
                   disabled={!currentUser}
-                  className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl border text-sm font-bold transition-all duration-200 ${
+                  className={`py-2 px-3 rounded-xl border text-xs font-bold transition-all duration-200 flex items-center justify-center gap-2 ${
                     userVote?.type === "down"
                       ? "bg-red-600/20 border-red-500/50 text-red-300"
                       : "bg-white/5 border-white/10 text-gray-400 hover:border-red-500/50 hover:text-red-300"
                   } disabled:opacity-40 disabled:cursor-not-allowed`}
                 >
-                  👎 <span>{game.downvotes.toLocaleString()}</span>
+                  👎 <span>{downvotes.toLocaleString()}</span>
                 </button>
               </div>
+
+              {!currentUser && (
+                <div className="bg-white/5 border border-white/5 rounded-xl py-2.5 px-4 text-center mt-3">
+                  <p className="text-xs sm:text-sm text-gray-300">
+                    <Link
+                      to="/login"
+                      className="text-violet-400 font-bold hover:text-violet-300 hover:underline"
+                    >
+                      Iniciá sesión
+                    </Link>{" "}
+                    para calificar este juego
+                  </p>
+                </div>
+              )}
             </div>
           </div>
         </div>
       </div>
+
+      {/* Modal de Pasarela de Compra */}
+      <CheckoutModal
+        game={game}
+        isOpen={isBuyModalOpen}
+        onClose={() => setIsBuyModalOpen(false)}
+      />
     </div>
   );
 }
