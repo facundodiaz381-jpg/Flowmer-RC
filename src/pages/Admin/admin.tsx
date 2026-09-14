@@ -1,4 +1,5 @@
-// Placeholder de AdminDashboard listo para implementar el CRUD
+// Panel de administración
+
 import { useState } from "react";
 import type { ChangeEvent } from "react";
 import { Link } from "react-router-dom";
@@ -46,10 +47,11 @@ const emptyForm: FormData = {
 };
 
 export function Admin() {
-  const { games, addGame, updateGame, deleteGame } = useGame();
+  
   const [editing, setEditing] = useState<Game | null>(null);
   const [form, setForm] = useState<FormData>(emptyForm);
-
+  
+  const { games, addGame, updateGame, deleteGame } = useGame();
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -102,6 +104,7 @@ export function Admin() {
 
   const editGame = (game: Game) => {
     setEditing(game);
+
     setForm({
       title: game.title,
       description: game.description,
